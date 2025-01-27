@@ -28,9 +28,12 @@ public class MenuInicio extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,28 +41,18 @@ public class MenuInicio extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(null);
 
-        jPanel4.setBackground(new java.awt.Color(224, 98, 4));
+        jPanel4.setBackground(new java.awt.Color(112, 163, 215));
         jPanel4.setPreferredSize(new java.awt.Dimension(250, 500));
-
-        jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("MENÚ");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(jLabel2)
-                .addContainerGap(87, Short.MAX_VALUE))
+            .addGap(0, 250, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel2)
-                .addContainerGap(415, Short.MAX_VALUE))
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel4);
@@ -71,19 +64,57 @@ public class MenuInicio extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("Copyright © Company Name All rights reserved");
 
+        jLabel5.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
+        jLabel5.setText("¿Qué paciente atenderemos hoy?");
+
+        jLabel3.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
+        jLabel3.setText("BIENVENIDA");
+
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
+        jLabel2.setText("---------");
+
+        jButton1.setBackground(new java.awt.Color(112, 163, 215));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("PACIENTES");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(291, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(21, 21, 21))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(198, 198, 198)
+                        .addComponent(jButton1)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(478, Short.MAX_VALUE)
+                .addGap(46, 46, 46)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(43, 43, 43)
+                .addComponent(jLabel5)
+                .addGap(80, 80, 80)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
         );
@@ -145,8 +176,11 @@ public class MenuInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;

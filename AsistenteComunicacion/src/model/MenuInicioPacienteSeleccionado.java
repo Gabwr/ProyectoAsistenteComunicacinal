@@ -30,8 +30,13 @@ public class MenuInicioPacienteSeleccionado extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,7 +44,7 @@ public class MenuInicioPacienteSeleccionado extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(null);
 
-        jPanel4.setBackground(new java.awt.Color(224, 98, 4));
+        jPanel4.setBackground(new java.awt.Color(112, 163, 215));
         jPanel4.setPreferredSize(new java.awt.Dimension(250, 500));
 
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 36)); // NOI18N
@@ -48,15 +53,23 @@ public class MenuInicioPacienteSeleccionado extends javax.swing.JFrame {
 
         jPanel3.setPreferredSize(new java.awt.Dimension(175, 350));
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 175, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jComboBox1, 0, 163, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(299, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -92,19 +105,52 @@ public class MenuInicioPacienteSeleccionado extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("Copyright © Company Name All rights reserved");
 
+        jLabel3.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
+        jLabel3.setText("TU PACIENTE ES");
+
+        jLabel4.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
+        jLabel4.setText("-------------");
+
+        jLabel5.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
+        jLabel5.setText("Selecciona la necesidad");
+
+        jLabel6.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
+        jLabel6.setText("a cubrir");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(291, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(66, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(89, 89, 89))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addGap(77, 77, 77))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(216, 216, 216))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(478, Short.MAX_VALUE)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
         );
@@ -167,8 +213,13 @@ public class MenuInicioPacienteSeleccionado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

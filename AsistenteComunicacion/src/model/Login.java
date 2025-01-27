@@ -46,7 +46,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(null);
 
-        Derecha.setBackground(new java.awt.Color(224, 98, 4));
+        Derecha.setBackground(new java.awt.Color(112, 163, 215));
         Derecha.setPreferredSize(new java.awt.Dimension(400, 500));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/diamond-dog-mgs-logo-92B35AAE5F-.png"))); // NOI18N
@@ -54,6 +54,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Sitka Text", 1, 36)); // NOI18N
         jLabel4.setText("Company Name");
 
+        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("Copyright © Company Name All rights reserved");
 
         javax.swing.GroupLayout DerechaLayout = new javax.swing.GroupLayout(Derecha);
@@ -93,7 +94,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(224, 98, 4));
+        jLabel1.setForeground(new java.awt.Color(112, 163, 215));
         jLabel1.setText("LOGIN");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -109,7 +110,7 @@ public class Login extends javax.swing.JFrame {
 
         jPasswordField1.setForeground(new java.awt.Color(102, 102, 102));
 
-        jButton1.setBackground(new java.awt.Color(224, 98, 4));
+        jButton1.setBackground(new java.awt.Color(112, 163, 215));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Ingresar");
 
