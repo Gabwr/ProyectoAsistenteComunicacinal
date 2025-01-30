@@ -38,6 +38,8 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LOGIN");
@@ -114,6 +116,10 @@ public class Login extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Ingresar");
 
+        jLabel7.setText("¿Algún problema?");
+
+        jButton2.setText("Contacto Soporte Técnico");
+
         javax.swing.GroupLayout IzquierdaLayout = new javax.swing.GroupLayout(Izquierda);
         Izquierda.setLayout(IzquierdaLayout);
         IzquierdaLayout.setHorizontalGroup(
@@ -130,7 +136,11 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jTextField1)
                             .addComponent(jLabel3)
                             .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(IzquierdaLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2)))))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         IzquierdaLayout.setVerticalGroup(
@@ -146,9 +156,16 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addGroup(IzquierdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(IzquierdaLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                        .addComponent(jLabel7))
+                    .addGroup(IzquierdaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)))
+                .addContainerGap())
         );
 
         jPanel1.add(Izquierda);
@@ -213,12 +230,14 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel Derecha;
     private javax.swing.JPanel Izquierda;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
