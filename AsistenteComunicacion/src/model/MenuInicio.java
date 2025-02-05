@@ -47,6 +47,9 @@ public class MenuInicio extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(224, 98, 4));
         jPanel4.setPreferredSize(new java.awt.Dimension(250, 500));
 
+        OpMenu.setBackground(new java.awt.Color(255, 51, 0));
+
+        jButton1.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jButton1.setText("Inicio");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,8 +57,10 @@ public class MenuInicio extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jButton2.setText("Salir");
 
+        jButton3.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jButton3.setText("Ajustes");
 
         javax.swing.GroupLayout OpMenuLayout = new javax.swing.GroupLayout(OpMenu);
@@ -82,6 +87,8 @@ public class MenuInicio extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
+        Menubtt1.setBackground(new java.awt.Color(255, 102, 51));
+        Menubtt1.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         Menubtt1.setText("Menu");
         Menubtt1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +96,8 @@ public class MenuInicio extends javax.swing.JFrame {
             }
         });
 
+        Menubtt.setBackground(new java.awt.Color(255, 102, 51));
+        Menubtt.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         Menubtt.setText("Menu");
         Menubtt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +110,7 @@ public class MenuInicio extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+                .addContainerGap(37, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Menubtt1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -181,7 +190,7 @@ public class MenuInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_MenubttActionPerformed
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
-       OpMenu.setVisible(false);
+        OpMenu.setVisible(false);
     }//GEN-LAST:event_jPanel2MouseClicked
 
     /**

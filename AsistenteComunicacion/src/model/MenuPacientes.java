@@ -31,6 +31,17 @@ public class MenuPacientes extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jPanel4 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        Paciente2Pj = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        Paciente1Pj = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        Paciente3Pj = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
@@ -41,33 +52,196 @@ public class MenuPacientes extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(224, 98, 4));
         jPanel4.setPreferredSize(new java.awt.Dimension(250, 500));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("SELECCIONE UN PACIENTE:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(jLabel1)
+                .addContainerGap(299, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(19, 19, 19))
+        );
+
+        Paciente2Pj.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Paciente2PjMouseClicked(evt);
+            }
+        });
+
+        jLabel2.setText("Imagen2");
+
+        jLabel3.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        jLabel3.setText("Paciente 2");
+
+        javax.swing.GroupLayout Paciente2PjLayout = new javax.swing.GroupLayout(Paciente2Pj);
+        Paciente2Pj.setLayout(Paciente2PjLayout);
+        Paciente2PjLayout.setHorizontalGroup(
+            Paciente2PjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Paciente2PjLayout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addGroup(Paciente2PjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addContainerGap(97, Short.MAX_VALUE))
+        );
+        Paciente2PjLayout.setVerticalGroup(
+            Paciente2PjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Paciente2PjLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(84, 84, 84))
+        );
+
+        Paciente1Pj.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Paciente1PjMouseClicked(evt);
+            }
+        });
+
+        jLabel4.setText("Imagen1");
+
+        jLabel5.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        jLabel5.setText("Paciente 1");
+
+        javax.swing.GroupLayout Paciente1PjLayout = new javax.swing.GroupLayout(Paciente1Pj);
+        Paciente1Pj.setLayout(Paciente1PjLayout);
+        Paciente1PjLayout.setHorizontalGroup(
+            Paciente1PjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Paciente1PjLayout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addGroup(Paciente1PjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4))
+                .addContainerGap(97, Short.MAX_VALUE))
+        );
+        Paciente1PjLayout.setVerticalGroup(
+            Paciente1PjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Paciente1PjLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(84, 84, 84))
+        );
+
+        Paciente3Pj.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Paciente3PjMouseClicked(evt);
+            }
+        });
+
+        jLabel6.setText("Imagen3");
+
+        jLabel7.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        jLabel7.setText("Paciente 3");
+
+        javax.swing.GroupLayout Paciente3PjLayout = new javax.swing.GroupLayout(Paciente3Pj);
+        Paciente3Pj.setLayout(Paciente3PjLayout);
+        Paciente3PjLayout.setHorizontalGroup(
+            Paciente3PjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Paciente3PjLayout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addGroup(Paciente3PjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6))
+                .addContainerGap(97, Short.MAX_VALUE))
+        );
+        Paciente3PjLayout.setVerticalGroup(
+            Paciente3PjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Paciente3PjLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(84, 84, 84))
+        );
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 625, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(72, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(Paciente2Pj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Paciente3Pj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(35, 35, 35)
+                    .addComponent(Paciente1Pj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(575, Short.MAX_VALUE)))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Paciente2Pj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Paciente3Pj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(76, 76, 76))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                    .addContainerGap(210, Short.MAX_VALUE)
+                    .addComponent(Paciente1Pj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(76, 76, 76)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Paciente1PjMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Paciente1PjMouseClicked
+        MenuPacienteSeleccionado Paciente = new MenuPacienteSeleccionado();
+        Paciente.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_Paciente1PjMouseClicked
+
+    private void Paciente2PjMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Paciente2PjMouseClicked
+        MenuPacienteSeleccionado Paciente = new MenuPacienteSeleccionado();
+        Paciente.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_Paciente2PjMouseClicked
+
+    private void Paciente3PjMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Paciente3PjMouseClicked
+        MenuPacienteSeleccionado Paciente = new MenuPacienteSeleccionado();
+        Paciente.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_Paciente3PjMouseClicked
 
     /**
      * @param args the command line arguments
@@ -105,8 +279,19 @@ public class MenuPacientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Paciente1Pj;
+    private javax.swing.JPanel Paciente2Pj;
+    private javax.swing.JPanel Paciente3Pj;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPopupMenu jPopupMenu1;
     // End of variables declaration//GEN-END:variables
