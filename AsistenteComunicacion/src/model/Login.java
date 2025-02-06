@@ -30,7 +30,6 @@ public class Login extends javax.swing.JFrame {
         Derecha = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         Izquierda = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -52,38 +51,30 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/diamond-dog-mgs-logo-92B35AAE5F-.png"))); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Sitka Text", 1, 36)); // NOI18N
-        jLabel4.setText("Company Name");
-
-        jLabel6.setText("Copyright © Company Name All rights reserved");
+        jLabel4.setText("FUNAPACE");
 
         javax.swing.GroupLayout DerechaLayout = new javax.swing.GroupLayout(Derecha);
         Derecha.setLayout(DerechaLayout);
         DerechaLayout.setHorizontalGroup(
             DerechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DerechaLayout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(jLabel6)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DerechaLayout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
+                .addContainerGap(110, Short.MAX_VALUE)
                 .addGroup(DerechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DerechaLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(129, 129, 129))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DerechaLayout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(61, 61, 61))))
+                        .addGap(95, 95, 95))))
         );
         DerechaLayout.setVerticalGroup(
             DerechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DerechaLayout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addComponent(jLabel5)
-                .addGap(51, 51, 51)
+                .addGap(42, 42, 42)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addContainerGap())
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         jPanel1.add(Derecha);
@@ -217,7 +208,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
