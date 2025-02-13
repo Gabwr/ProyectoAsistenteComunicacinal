@@ -1,18 +1,16 @@
-
 package mongo.data.base;
 
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
-import com.mongodb.MongoException;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.MongoException;
 import javax.swing.JOptionPane;
 
 public class Conexion {
      private MongoClient mongo;
     private MongoDatabase dataB;
 
-    Conexion() {
-       
+    public Conexion() { 
     }
 
     public MongoClient getMONGO() {
@@ -27,10 +25,12 @@ public class Conexion {
         this.mongo = mongoClient;
         this.dataB = database;
     }
+    
     public Conexion crearConexion(){
-    String uri = "mongodb+srv://cluster0.itbva.mongodb.net/\"";
+    String uri = "mongodb+srv://admin:admin12345@cluster0.itbva.mongodb.net/ASISTENTE_VIRTUAL?retryWrites=true&w=majority";
+
     try{
-        mongo = new MongoClient(new MongoClientURI(uri));
+        MongoClient mongo =  MongoClients.create(uri);
         dataB = mongo.getDatabase("ASISTENTE_VIRTUAL");
         
     }catch(MongoException ex){

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package model;
+package VISTA;
 
 /**
  *
@@ -56,6 +56,7 @@ public class MenuInicio extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jButton1.setText("Inicio");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -64,9 +65,11 @@ public class MenuInicio extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jButton2.setText("Salir");
+        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jButton3.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jButton3.setText("Ajustes");
+        jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout OpMenuLayout = new javax.swing.GroupLayout(OpMenu);
         OpMenu.setLayout(OpMenuLayout);
@@ -95,6 +98,7 @@ public class MenuInicio extends javax.swing.JFrame {
         Menubtt1.setBackground(new java.awt.Color(255, 102, 51));
         Menubtt1.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         Menubtt1.setText("Menu");
+        Menubtt1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Menubtt1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Menubtt1ActionPerformed(evt);
@@ -104,6 +108,7 @@ public class MenuInicio extends javax.swing.JFrame {
         Menubtt.setBackground(new java.awt.Color(255, 102, 51));
         Menubtt.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         Menubtt.setText("Menu");
+        Menubtt.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Menubtt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenubttActionPerformed(evt);
