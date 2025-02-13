@@ -74,6 +74,7 @@ public class MenuPacientes extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
+        Paciente2Pj.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Paciente2Pj.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         Paciente2Pj.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -107,6 +108,7 @@ public class MenuPacientes extends javax.swing.JFrame {
                 .addGap(84, 84, 84))
         );
 
+        Paciente1Pj.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Paciente1Pj.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Paciente1PjMouseClicked(evt);
@@ -139,6 +141,7 @@ public class MenuPacientes extends javax.swing.JFrame {
                 .addGap(84, 84, 84))
         );
 
+        Paciente3Pj.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Paciente3Pj.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Paciente3PjMouseClicked(evt);
@@ -213,9 +216,7 @@ public class MenuPacientes extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 17, Short.MAX_VALUE))
+            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

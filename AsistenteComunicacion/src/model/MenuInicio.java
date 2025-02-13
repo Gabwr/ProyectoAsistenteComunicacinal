@@ -14,9 +14,11 @@ public class MenuInicio extends javax.swing.JFrame {
      * Creates new form MenuInicio
      */
     public MenuInicio() {
+        
+        
+        initComponents();
         OpMenu.setVisible(false);
         Menubtt1.setVisible(false);
-        initComponents();
     }
 
     /**
