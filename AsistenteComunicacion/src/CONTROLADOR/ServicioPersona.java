@@ -10,8 +10,20 @@ public class ServicioPersona {
          return new PersonaMetodos().ListaPersona();
     }
      
-    public boolean InsertarPersona(Persona persona){
+    public static boolean InsertarPersona(Persona persona){
         return new PersonaMetodos().InsertarPersona(persona);
+    }
+    
+    public static boolean ActualizarPersona(Persona persona){
+        return new PersonaMetodos().ActualizarPersona(persona);
+    }
+    
+    public static boolean ActivarPersona(Persona persona){
+        return new PersonaMetodos().ActivarPersona(persona);
+    }
+    
+    public static boolean DesactivarPersona(Persona persona){
+        return new PersonaMetodos().DesactivarPersona(persona);
     }
     
     public static String encriptar(String contrasenia){

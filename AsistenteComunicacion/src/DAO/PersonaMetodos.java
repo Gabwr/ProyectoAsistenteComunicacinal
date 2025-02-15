@@ -23,6 +23,8 @@ import org.apache.commons.codec.binary.Base64;
 import org.bson.Document;
 import mongo.data.base.Conexion;
 import MODELO.Persona;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.result.UpdateResult;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,6 +35,7 @@ public class PersonaMetodos implements Ipersona{
     MongoDatabase database;
     private MongoCollection<org.bson.Document> PERSONA;
     private MongoCollection<org.bson.Document> PERFIL;
+    private MongoCollection<org.bson.Document> TUT_PAC;
 
     public PersonaMetodos() {
         if (conn != null) {
@@ -40,6 +43,7 @@ public class PersonaMetodos implements Ipersona{
             this.database = conn.getDataB();
             this.PERSONA = database.getCollection("PERSONA");
             this.PERFIL = database.getCollection("PERFIL");
+            this.TUT_PAC = database.getCollection("TUTOR_PACIENTE");
         }
     }
 
@@ -56,26 +60,58 @@ public class PersonaMetodos implements Ipersona{
         FindIterable<Document> documentos = PERSONA.find();
         List<Persona> listapersonas = new ArrayList<>();
         for (Document documento : documentos) {
-            int IDPerfil = documento.getInteger("id_Perfil");
+            int IDPersona= documento.getInteger("id_persona");
+            int IDPerfil = documento.getInteger("id_perfil");
             String usuario = documento.getString("usuario");
             String nombre = documento.getString("nombre");
-            
-            Persona persona = new Persona(IDPerfil, usuario, nombre);
+            String estado = documento.getString("estado");
+            Object imgobj = documento.get("imagen");
+            org.bson.types.Binary binarioimg = (org.bson.types.Binary) imgobj;
+            byte [] img = binarioimg.getData();
+            Persona persona = new Persona(IDPersona,IDPerfil, usuario, nombre, img,estado);
             listapersonas.add(persona);
         }
 
         return listapersonas;
+    }
+        public List<Persona> ListaPacientes(Persona tutor){
+    List<Persona> listapacientes = new ArrayList<>();
+
+    FindIterable<Document> relaciones = TUT_PAC.find(Filters.eq("id_tutor", tutor.getIdPersona()));
+
+    List<Integer> pacientesIds;
+        pacientesIds = new ArrayList<>();
+    for (Document relacion : relaciones) {
+        pacientesIds.add(relacion.getInteger("id_paciente"));
+    }
+
+    if (!pacientesIds.isEmpty()) {
+        FindIterable<Document> documentos = PERSONA.find(Filters.in("id_paciente", pacientesIds));
+        for (Document documento : documentos) {
+            Persona persona = new Persona();
+            persona.setNombre(documento.getString("nombre"));
+            Object imgobj = documento.get("imagen");
+            if (imgobj instanceof org.bson.types.Binary) {
+                persona.setImg(((org.bson.types.Binary) imgobj).getData());
+            }
+
+            listapacientes.add(persona);
+        }
+    }
+    
+    return listapacientes;
     }
         
     @Override
     public boolean InsertarPersona(Persona persona) {
         Document documento;
         try {
-            documento = new Document("id_Persona", persona.getIdPersona())
-                    .append("id_Perfil", persona.getIdPerfil())
+            documento = new Document("id_persona", persona.getIdPersona())
+                    .append("id_perfil", persona.getIdPerfil())
                     .append("usuario", persona.getUsuario())
                     .append("nombre", persona.getNombre())
-                    .append("contrasenia", persona.getContrasenia());
+                    .append("contrasenia", persona.getContrasenia())
+                    .append("estado", "activo");
             PERSONA.insertOne(documento);
             return true;
         } catch (MongoException ex) {
@@ -86,6 +122,57 @@ public class PersonaMetodos implements Ipersona{
         }
     }
     
+    @Override
+    public boolean ActualizarPersona(Persona persona) {
+        Document filtro = new Document("id_persona", persona.getIdPersona());
+        Document documento = new Document("$set", new Document()
+                .append("id_perfil", persona.getIdPerfil())
+                .append("nombre", persona.getNombre())
+                .append("img",persona.getImg()));
+        UpdateResult resultado = PERSONA.updateOne(filtro, documento);
+        if (resultado.getModifiedCount() > 0) {
+            JOptionPane.showMessageDialog(null, "Se ha actualizado correctamente el registro");
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha podido actualizar el registro");
+            return false;
+
+        }
+    }
+    
+    @Override
+     public boolean ActivarPersona(Persona persona) {
+        Document filtro = new Document("id_persona", persona.getIdPersona());
+        Document documento = new Document("$set", new Document()
+                .append("estado", "activo"));
+        UpdateResult resultado = PERSONA.updateOne(filtro, documento);
+        if (resultado.getModifiedCount() > 0) {
+            JOptionPane.showMessageDialog(null, "Se ha actualizado correctamente el registro");
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha podido actualizar el registro");
+            return false;
+
+        }
+    }
+     
+    @Override
+         public boolean DesactivarPersona(Persona persona) {
+        Document filtro = new Document("id_persona", persona.getIdPersona());
+        Document documento = new Document("$set", new Document()
+                .append("estado", "desactivo"));
+        UpdateResult resultado = PERSONA.updateOne(filtro, documento);
+        if (resultado.getModifiedCount() > 0) {
+            JOptionPane.showMessageDialog(null, "Se ha actualizado correctamente el registro");
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha podido actualizar el registro");
+            return false;
+
+        }
+    }
+    
+         
     @Override
     public String encriptar(String contrasenia) {
         String Encriptado = "";
@@ -106,6 +193,7 @@ public class PersonaMetodos implements Ipersona{
         return Encriptado;
     }
 
+    
     @Override
     public String desencriptar(String contraseniaEncriptada, String contrasenia) {
         String desEncriptado = "";

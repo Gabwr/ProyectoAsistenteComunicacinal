@@ -9,6 +9,12 @@ public interface Ipersona {
    public List<Persona> ListaPersona();
           
    public boolean InsertarPersona(Persona persona);
+   
+   public boolean ActualizarPersona(Persona persona);
+   
+   public boolean ActivarPersona(Persona persona);
+   
+   public boolean DesactivarPersona(Persona persona);
            
    public String encriptar(String contrasenia);
     
