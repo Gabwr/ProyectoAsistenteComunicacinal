@@ -65,41 +65,39 @@ public class PersonaMetodos implements Ipersona{
             String usuario = documento.getString("usuario");
             String nombre = documento.getString("nombre");
             String estado = documento.getString("estado");
-            Object imgobj = documento.get("imagen");
-            org.bson.types.Binary binarioimg = (org.bson.types.Binary) imgobj;
-            byte [] img = binarioimg.getData();
-            Persona persona = new Persona(IDPersona,IDPerfil, usuario, nombre, img,estado);
+            Persona persona = new Persona(IDPersona,IDPerfil, usuario, nombre,estado);
             listapersonas.add(persona);
         }
 
         return listapersonas;
     }
-        public List<Persona> ListaPacientes(Persona tutor){
-    List<Persona> listapacientes = new ArrayList<>();
-
-    FindIterable<Document> relaciones = TUT_PAC.find(Filters.eq("id_tutor", tutor.getIdPersona()));
-
-    List<Integer> pacientesIds;
-        pacientesIds = new ArrayList<>();
-    for (Document relacion : relaciones) {
-        pacientesIds.add(relacion.getInteger("id_paciente"));
-    }
-
-    if (!pacientesIds.isEmpty()) {
-        FindIterable<Document> documentos = PERSONA.find(Filters.in("id_paciente", pacientesIds));
-        for (Document documento : documentos) {
-            Persona persona = new Persona();
-            persona.setNombre(documento.getString("nombre"));
-            Object imgobj = documento.get("imagen");
-            if (imgobj instanceof org.bson.types.Binary) {
-                persona.setImg(((org.bson.types.Binary) imgobj).getData());
-            }
-
-            listapacientes.add(persona);
-        }
-    }
     
-    return listapacientes;
+    public List<Persona> ListaPacientes(Persona tutor){
+        List<Persona> listapacientes = new ArrayList<>();
+
+        FindIterable<Document> relaciones = TUT_PAC.find(Filters.eq("id_tutor", tutor.getIdPersona()));
+
+        List<Integer> pacientesIds;
+            pacientesIds = new ArrayList<>();
+        for (Document relacion : relaciones) {
+            pacientesIds.add(relacion.getInteger("id_paciente"));
+        }
+
+        if (!pacientesIds.isEmpty()) {
+            FindIterable<Document> documentos = PERSONA.find(Filters.in("id_paciente", pacientesIds));
+            for (Document documento : documentos) {
+                Persona persona = new Persona();
+                persona.setNombre(documento.getString("nombre"));
+                Object imgobj = documento.get("imagen");
+                if (imgobj instanceof org.bson.types.Binary) {
+                    persona.setImg(((org.bson.types.Binary) imgobj).getData());
+                }
+
+                listapacientes.add(persona);
+            }
+        }
+
+        return listapacientes;
     }
         
     @Override

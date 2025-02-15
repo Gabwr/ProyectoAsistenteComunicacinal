@@ -27,6 +27,16 @@ public class Persona {
         this.img=img;
         this.estado = estado;
     }
+
+    public Persona(int idPersona, int IdPerfil, String usuario, String nombre, String estado) {
+        this.idPersona = idPersona;
+        this.IdPerfil = IdPerfil;
+        this.usuario = usuario;
+        this.nombre = nombre;
+        this.estado = estado;
+    }
+    
+    
     public String getNombre() {
         return nombre;
     }
