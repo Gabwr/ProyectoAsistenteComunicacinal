@@ -4,10 +4,7 @@
  */
 package MODELO;
 
-/**
- *
- * @author Kathy
- */
+
 public class Accion {
     
 }

@@ -3,14 +3,15 @@ package MODELO;
 
 
 public class Objeto {
-    private int idObjeto;
+    private int idObjeto, idAccion;
     private String ObjetoNombre;
     private byte[] imagen;
 
     public Objeto() {
     }
 
-    public Objeto(int idObjeto, String ObjetoNombre, byte[] imagen) {
+    public Objeto(int idObjeto, int idAccion, String ObjetoNombre, byte[] imagen) {
+        this.idAccion=idAccion;
         this.idObjeto = idObjeto;
         this.ObjetoNombre = ObjetoNombre;
         this.imagen = imagen;

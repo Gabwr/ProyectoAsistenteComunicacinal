@@ -186,7 +186,7 @@ public class PersonaMetodos implements Ipersona{
             byte[] buffer = cifrado.doFinal(textoPlano);
             byte[] base64 = Base64.encodeBase64(buffer);
             Encriptado = new String(base64);
-        } catch (Exception e) {
+        } catch (Exception e) { 
         }
         return Encriptado;
     }

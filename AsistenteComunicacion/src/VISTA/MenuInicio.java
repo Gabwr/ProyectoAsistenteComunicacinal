@@ -92,7 +92,7 @@ public class MenuInicio extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         Menubtt1.setBackground(new java.awt.Color(255, 102, 51));
@@ -136,7 +136,7 @@ public class MenuInicio extends javax.swing.JFrame {
                 .addComponent(Menubtt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(OpMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addContainerGap(275, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel4);
