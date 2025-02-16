@@ -4,10 +4,10 @@
  */
 package VISTA;
 
-/**
- *
- * @author EDWARICHSNAKE
- */
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import servicio.AccionServicio;
+
 public class MenuInicio extends javax.swing.JFrame {
 
     /**
@@ -36,6 +36,7 @@ public class MenuInicio extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        bttSubAcciones = new javax.swing.JButton();
         Menubtt1 = new javax.swing.JButton();
         Menubtt = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -71,16 +72,26 @@ public class MenuInicio extends javax.swing.JFrame {
         jButton3.setText("Ajustes");
         jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        bttSubAcciones.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
+        bttSubAcciones.setText("Subir acciones");
+        bttSubAcciones.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        bttSubAcciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttSubAccionesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout OpMenuLayout = new javax.swing.GroupLayout(OpMenu);
         OpMenu.setLayout(OpMenuLayout);
         OpMenuLayout.setHorizontalGroup(
             OpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OpMenuLayout.createSequentialGroup()
+            .addGroup(OpMenuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(OpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE))
+                .addGroup(OpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bttSubAcciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         OpMenuLayout.setVerticalGroup(
@@ -92,7 +103,9 @@ public class MenuInicio extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bttSubAcciones)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         Menubtt1.setBackground(new java.awt.Color(255, 102, 51));
@@ -125,7 +138,7 @@ public class MenuInicio extends javax.swing.JFrame {
                     .addComponent(Menubtt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Menubtt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(OpMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,6 +224,12 @@ public class MenuInicio extends javax.swing.JFrame {
         OpMenu.setVisible(false);
     }//GEN-LAST:event_jPanel2MouseClicked
 
+    private void bttSubAccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttSubAccionesActionPerformed
+    Path rutaImagen = Paths.get("C:\\Users\\Usuario\\Pictures\\a.jpg").toAbsolutePath();
+    AccionServicio.guardarImagenEnMongo(4, rutaImagen.toString());
+
+    }//GEN-LAST:event_bttSubAccionesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -250,6 +269,7 @@ public class MenuInicio extends javax.swing.JFrame {
     private javax.swing.JButton Menubtt;
     private javax.swing.JButton Menubtt1;
     private javax.swing.JPanel OpMenu;
+    private javax.swing.JButton bttSubAcciones;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
