@@ -23,12 +23,15 @@ public class Acciones extends javax.swing.JFrame {
     private int indiceActual = 0;
     private Timer timer;
     private boolean sliderActivo = true;
+    public static String _idAccion = null;
 
      
     public Acciones() {
         initComponents();
         cargarAcciones();
         mostrarImagenActual();
+        cargarid();
+//        idAccion.setVisible(false);
        
     }
     private void cargarAcciones() {
@@ -50,6 +53,22 @@ public class Acciones extends javax.swing.JFrame {
             }
         }
     }
+    private void cargarid() {
+    if (acciones != null && !acciones.isEmpty() && indiceActual >= 0 && indiceActual < acciones.size()) {
+        Accion accionActual = acciones.get(indiceActual);
+        int id = accionActual.getIdAccion();
+
+        if (id > 0) {
+            idAccion.setText("ID: " + id);
+            _idAccion = String.valueOf(id); 
+        } else {
+            idAccion.setText("ID no disponible");
+            _idAccion = null;
+        }
+        System.out.println("ID Actual: " + _idAccion); 
+    }
+}
+
     private void iniciarSlider() {
     timer = new Timer(3000, new ActionListener() { // Cada 3 segundos
         @Override
@@ -68,18 +87,20 @@ public class Acciones extends javax.swing.JFrame {
     if (indiceActual < acciones.size() - 1) {
         indiceActual++;
     } else {
-        indiceActual = 0; // Volver al inicio
+        indiceActual = 0;
     }
     mostrarImagenActual();
+    cargarid();
 }
 
 private void anteriorImagen() {
     if (indiceActual > 0) {
         indiceActual--;
     } else {
-        indiceActual = acciones.size() - 1; // Ir al final
+        indiceActual = acciones.size() - 1; 
     }
     mostrarImagenActual();
+    cargarid();
 }
 
 
@@ -96,9 +117,11 @@ private void anteriorImagen() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
-        right = new javax.swing.JPanel();
-        left = new javax.swing.JPanel();
         jLIMAGENES = new javax.swing.JLabel();
+        Left = new javax.swing.JLabel();
+        Rigth = new javax.swing.JLabel();
+        idAccion = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMRegresar = new javax.swing.JMenuItem();
@@ -110,40 +133,7 @@ private void anteriorImagen() {
 
         jPanel1.setBackground(new java.awt.Color(204, 51, 0));
         jPanel1.setForeground(new java.awt.Color(204, 51, 0));
-
-        right.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                rightMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout rightLayout = new javax.swing.GroupLayout(right);
-        right.setLayout(rightLayout);
-        rightLayout.setHorizontalGroup(
-            rightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        rightLayout.setVerticalGroup(
-            rightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        left.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                leftMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout leftLayout = new javax.swing.GroupLayout(left);
-        left.setLayout(leftLayout);
-        leftLayout.setHorizontalGroup(
-            leftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        leftLayout.setVerticalGroup(
-            leftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLIMAGENES.setText("jLabel1");
         jLIMAGENES.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
@@ -157,34 +147,70 @@ private void anteriorImagen() {
             }
         });
 
+        Left.setFont(new java.awt.Font("Segoe UI", 0, 2)); // NOI18N
+        Left.setForeground(new java.awt.Color(204, 51, 0));
+        Left.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagen_2025-02-16_164430090 (1).png"))); // NOI18N
+        Left.setText("jLabel1");
+        Left.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LeftMouseClicked(evt);
+            }
+        });
+
+        Rigth.setFont(new java.awt.Font("Segoe UI", 0, 2)); // NOI18N
+        Rigth.setForeground(new java.awt.Color(204, 51, 0));
+        Rigth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagen_2025-02-16_163044817.png"))); // NOI18N
+        Rigth.setText("jLabel1");
+        Rigth.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RigthMouseClicked(evt);
+            }
+        });
+
+        idAccion.setText("queso");
+
+        jLabel1.setFont(new java.awt.Font("Serif", 2, 36)); // NOI18N
+        jLabel1.setText("ACCIONES");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(left, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(143, 143, 143)
-                .addComponent(jLIMAGENES, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(193, 193, 193)
-                .addComponent(right, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(idAccion))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(Left)))
+                .addGap(36, 36, 36)
+                .addComponent(jLIMAGENES, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addComponent(Rigth)
+                .addContainerGap(184, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(525, 525, 525))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(right, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(182, 182, 182))
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(182, 182, 182)
-                        .addComponent(left, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(98, 98, 98)
+                        .addComponent(idAccion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Rigth)
+                            .addComponent(Left)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(jLIMAGENES, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(145, Short.MAX_VALUE))
+                        .addGap(28, 28, 28)
+                        .addComponent(jLIMAGENES, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(315, Short.MAX_VALUE))
         );
 
         jMenu1.setText("File");
@@ -229,27 +255,6 @@ private void anteriorImagen() {
         setVisible(false);
     }//GEN-LAST:event_jMRegresarActionPerformed
 
-    private void leftMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftMouseClicked
-        if (sliderActivo && timer != null) {
-        timer.stop(); 
-    }
-    siguienteImagen();
-    if (!sliderActivo) {
-        iniciarSlider(); 
-    }
-    }//GEN-LAST:event_leftMouseClicked
-
-    private void rightMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightMouseClicked
-        if (sliderActivo && timer != null) {
-        timer.stop(); 
-    }
-    anteriorImagen();
-    if (!sliderActivo) {
-        iniciarSlider(); 
-    }
-    
-    }//GEN-LAST:event_rightMouseClicked
-
     private void jLIMAGENESMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLIMAGENESMouseClicked
         Objetos objeto = new Objetos();
         objeto.setVisible(true);
@@ -267,6 +272,26 @@ private void anteriorImagen() {
     }
                
     }//GEN-LAST:event_jLIMAGENESMouseWheelMoved
+
+    private void LeftMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LeftMouseClicked
+         if (sliderActivo && timer != null) {
+        timer.stop(); 
+    }
+    siguienteImagen();
+    if (!sliderActivo) {
+        iniciarSlider(); 
+    }
+    }//GEN-LAST:event_LeftMouseClicked
+
+    private void RigthMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RigthMouseClicked
+        if (sliderActivo && timer != null) {
+        timer.stop(); 
+    }
+    anteriorImagen();
+    if (!sliderActivo) {
+        iniciarSlider(); 
+    }
+    }//GEN-LAST:event_RigthMouseClicked
 
     /**
      * @param args the command line arguments
@@ -304,14 +329,16 @@ private void anteriorImagen() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Left;
+    private javax.swing.JLabel Rigth;
+    private javax.swing.JLabel idAccion;
     private javax.swing.JLabel jLIMAGENES;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMRegresar;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel left;
-    private javax.swing.JPanel right;
     // End of variables declaration//GEN-END:variables
 }

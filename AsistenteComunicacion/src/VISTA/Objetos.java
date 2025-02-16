@@ -4,18 +4,20 @@
  */
 package VISTA;
 
-/**
- *
- * @author Usuario
- */
 public class Objetos extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Objetos
-     */
+   
     public Objetos() {
         initComponents();
+        String id = Acciones._idAccion; 
+        if (id != null) {
+            _idAccion.setText(id);
+        } else {
+            _idAccion.setText("Sin ID");
+        }
     }
+       
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +28,58 @@ public class Objetos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        _idAccion = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMRegresar = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        _idAccion.setText("jLabel1");
+
+        jMenu1.setText("File");
+
+        jMRegresar.setText("Regresar");
+        jMRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMRegresarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMRegresar);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(_idAccion)
+                .addContainerGap(264, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(_idAccion)
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMRegresarActionPerformed
+        Acciones Accion = new Acciones();
+        Accion.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_jMRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +117,10 @@ public class Objetos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel _idAccion;
+    private javax.swing.JMenuItem jMRegresar;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

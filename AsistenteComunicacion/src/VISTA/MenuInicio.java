@@ -225,7 +225,7 @@ public class MenuInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void bttSubAccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttSubAccionesActionPerformed
-    Path rutaImagen = Paths.get("C:\\Users\\Usuario\\Pictures\\a.jpg").toAbsolutePath();
+    Path rutaImagen = Paths.get("C:\\Users\\Usuario\\Documents\\Procesos\\ProyectoAsistenteComunicacinal\\AsistenteComunicacion\\imagenes\\istockphoto-507024280-612x612.jpg").toAbsolutePath();
     AccionServicio.guardarImagenEnMongo(4, rutaImagen.toString());
 
     }//GEN-LAST:event_bttSubAccionesActionPerformed
