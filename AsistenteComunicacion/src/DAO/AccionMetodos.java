@@ -57,36 +57,6 @@ public class AccionMetodos implements IAccion{
         }
     }
 
-    @Override
-public boolean CargarAccion(Accion accion) {
-    try {
-        Document doc = ACCION.find(eq("_id", accion.getIdAccion())).first();
-        if (doc != null) {
-            Object imgData = doc.get("imagen");
-            
-            if (imgData instanceof List) { 
-                List<Integer> imgList = (List<Integer>) imgData;
-                byte[] imgBytes = new byte[imgList.size()];
-                for (int i = 0; i < imgList.size(); i++) {
-                    imgBytes[i] = imgList.get(i).byteValue();
-                }
-                accion.setImagen(imgBytes);
-            } else if (imgData instanceof String) {
-                accion.setImagen(Base64.decodeBase64((String) imgData));
-            } else {
-                JOptionPane.showMessageDialog(null, "Formato de imagen no reconocido.");
-                return false;
-            }
-
-            return true;
-        } else {
-            JOptionPane.showMessageDialog(null, "No se encontró la acción con ID: " + accion.getIdAccion());
-        }
-    } catch (MongoException e) {
-        JOptionPane.showMessageDialog(null, "Error al cargar la acción: " + e.getMessage());
-    }
-    return false;
-}
 
     @Override
     public boolean guardarImagenEnMongo(int idAccion, String rutaImagen) {
@@ -107,4 +77,54 @@ public boolean CargarAccion(Accion accion) {
         }
         return false;
     }
+
+  @Override
+public List<Accion> CargarAccion() {
+    FindIterable<Document> documentos = ACCION.find(); // Similar a ListaPersona
+    List<Accion> listaAcciones = new ArrayList<>();
+
+    for (Document documento : documentos) {
+        int idAccion = documento.getInteger("_idacciones", -1);
+        String encodedString = documento.getString("imagen");
+        
+        byte[] imagen = (encodedString != null) ? Base64.decodeBase64(encodedString) : new byte[0];
+        
+        Accion accion = new Accion();
+        accion.setIdAccion(idAccion);
+        accion.setImagen(imagen);
+        listaAcciones.add(accion);
+    }
+    return listaAcciones;
 }
+}
+
+//    @Override
+//public boolean CargarAccion(Accion accion) {
+//    try {
+//        Document doc = ACCION.find(eq("_id", accion.getIdAccion())).first();
+//        if (doc != null) {
+//            Object imgData = doc.get("imagen");
+//            
+//            if (imgData instanceof List) { 
+//                List<Integer> imgList = (List<Integer>) imgData;
+//                byte[] imgBytes = new byte[imgList.size()];
+//                for (int i = 0; i < imgList.size(); i++) {
+//                    imgBytes[i] = imgList.get(i).byteValue();
+//                }
+//                accion.setImagen(imgBytes);
+//            } else if (imgData instanceof String) {
+//                accion.setImagen(Base64.decodeBase64((String) imgData));
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Formato de imagen no reconocido.");
+//                return false;
+//            }
+//
+//            return true;
+//        } else {
+//            JOptionPane.showMessageDialog(null, "No se encontró la acción con ID: " + accion.getIdAccion());
+//        }
+//    } catch (MongoException e) {
+//        JOptionPane.showMessageDialog(null, "Error al cargar la acción: " + e.getMessage());
+//    }
+//    return false;
+//}

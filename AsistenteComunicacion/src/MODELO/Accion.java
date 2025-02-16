@@ -7,6 +7,7 @@ package MODELO;
 
 public class Accion {
     private int  idAccion;
+    private byte[] imagen;
 
     public int getIdAccion() {
         return idAccion;
@@ -23,5 +24,5 @@ public class Accion {
     public void setImagen(byte[] imagen) {
         this.imagen = imagen;
     }
-    private byte[] imagen;
+    
 }

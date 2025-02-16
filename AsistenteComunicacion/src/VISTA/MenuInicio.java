@@ -6,7 +6,7 @@ package VISTA;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import servicio.AccionServicio;
+import CONTROLADOR.AccionServicio;
 
 public class MenuInicio extends javax.swing.JFrame {
 

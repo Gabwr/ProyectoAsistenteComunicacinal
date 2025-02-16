@@ -8,6 +8,6 @@ import MODELO.Accion;
 import java.util.List;
 
 public interface IAccion {
- public boolean CargarAccion(Accion accion);
+ public List <Accion> CargarAccion();
  public boolean guardarImagenEnMongo(int idAccion, String rutaImagen);
 }
