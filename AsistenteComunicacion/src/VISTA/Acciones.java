@@ -23,7 +23,7 @@ public class Acciones extends javax.swing.JFrame {
     private int indiceActual = 0;
     private Timer timer;
     private boolean sliderActivo = true;
-    public static String _idAccion = null;
+    public static int _idAccion = 0;
 
      
     public Acciones() {
@@ -60,10 +60,10 @@ public class Acciones extends javax.swing.JFrame {
 
         if (id > 0) {
             idAccion.setText("ID: " + id);
-            _idAccion = String.valueOf(id); 
+            _idAccion = id; 
         } else {
             idAccion.setText("ID no disponible");
-            _idAccion = null;
+            _idAccion = 0;
         }
         System.out.println("ID Actual: " + _idAccion); 
     }

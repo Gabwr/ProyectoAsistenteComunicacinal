@@ -14,4 +14,5 @@ import java.util.List;
 public interface IObjetos {
  public List <Objeto> CargarObjeto();
  public boolean guardarImagenEnMongo(int idAccion, int idObjeto, String rutaImagen);
+ public List<Objeto> CargarObjetosPorAccion(int idAccion);
 }

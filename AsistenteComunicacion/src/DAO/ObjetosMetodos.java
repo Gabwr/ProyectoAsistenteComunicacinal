@@ -105,6 +105,43 @@ public List<Objeto> CargarObjeto() {
     }
     return listaObjetos;
 }
+
+   
+    
+   
+  
+
+    @Override
+    public List<Objeto> CargarObjetosPorAccion(int idAccion) {
+    List<Objeto> listaObjetos = new ArrayList<>();
+    
+    
+    FindIterable<Document> documentos = OBJETO.find(eq("_idAccion", idAccion));
+
+    
+    for (Document documento : documentos) {
+        
+        int idObjeto = documento.getInteger("_idObjeto", -1);
+        
+        
+        String encodedString = documento.getString("imagen");
+
+       
+        byte[] imagen = (encodedString != null) ? Base64.decodeBase64(encodedString) : new byte[0];
+
+        
+        Objeto objeto = new Objeto();
+        objeto.setIdAccion(idAccion);  
+        objeto.setIdObjeto(idObjeto);  
+        objeto.setImagen(imagen);      
+
+        
+        listaObjetos.add(objeto);
+    }
+
+    
+    return listaObjetos;
+}
 }
 
 

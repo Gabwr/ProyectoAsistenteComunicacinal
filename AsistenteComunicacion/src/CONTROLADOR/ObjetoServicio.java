@@ -16,4 +16,8 @@ public class ObjetoServicio {
      public static boolean guardarImagenEnMongo(int idAccion, int idObjeto ,String rutaImagen){
          return new ObjetosMetodos().guardarImagenEnMongo(idAccion,idObjeto,rutaImagen);
      }
+  
+    public static List<Objeto> CargarObjetosPorAccion(int _idAccion) {
+        return new ObjetosMetodos().CargarObjetosPorAccion(_idAccion);
+    }
 }
