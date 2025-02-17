@@ -46,6 +46,7 @@ private int contarObjetos() {
         jLabel1 = new javax.swing.JLabel();
         bttExploradorArchivos = new javax.swing.JButton();
         bttSubir = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,6 +73,9 @@ private int contarObjetos() {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
+        jLabel2.setText("Cargar Objetos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,17 +94,23 @@ private int contarObjetos() {
                         .addGap(146, 146, 146)
                         .addComponent(bttSubir)))
                 .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(129, 129, 129))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(35, 35, 35)
                 .addComponent(jCBAccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(bttExploradorArchivos)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addComponent(bttSubir)
                 .addGap(33, 33, 33))
         );
@@ -201,5 +211,6 @@ private int contarObjetos() {
     private javax.swing.JButton bttSubir;
     private javax.swing.JComboBox<String> jCBAccion;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
