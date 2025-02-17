@@ -4,10 +4,16 @@
  */
 package CONTROLADOR;
 
-/**
- *
- * @author DELL
- */
+import java.util.List;
+import DAO.ObjetosMetodos;
+import DAO.ObjetosMetodos;
+import MODELO.Objeto;
+
 public class ObjetoServicio {
-    
+    public static  List<Objeto> CargarObjeto(){
+         return new ObjetosMetodos().CargarObjeto();
+     }
+     public static boolean guardarImagenEnMongo(int idAccion, int idObjeto ,String rutaImagen){
+         return new ObjetosMetodos().guardarImagenEnMongo(idAccion,idObjeto,rutaImagen);
+     }
 }
