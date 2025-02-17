@@ -3,7 +3,7 @@ package MODELO;
 
 
 public class Objeto {
-    private int idObjeto, idAccion;
+    private int idObjeto, idAccion;  
     private String ObjetoNombre;
     private byte[] imagen;
 
@@ -16,7 +16,13 @@ public class Objeto {
         this.ObjetoNombre = ObjetoNombre;
         this.imagen = imagen;
     }
+public int getIdAccion() {
+        return idAccion;
+    }
 
+    public void setIdAccion(int idAccion) {
+        this.idAccion = idAccion;
+    }
     public int getIdObjeto() {
         return idObjeto;
     }
