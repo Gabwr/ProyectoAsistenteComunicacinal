@@ -49,6 +49,11 @@ private int contarObjetos() {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jCBAccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comer", "Beber", "Molestia", "Baño" }));
         jCBAccion.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +175,11 @@ private int contarObjetos() {
         System.out.println("No se seleccionó ningún archivo.");
     }
     }//GEN-LAST:event_bttExploradorArchivosActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+       MenuInicio inicio = new MenuInicio();
+       inicio.setEnabled(true);
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
