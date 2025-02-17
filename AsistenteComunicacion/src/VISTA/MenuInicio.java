@@ -73,7 +73,7 @@ public class MenuInicio extends javax.swing.JFrame {
         jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         bttSubAcciones.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
-        bttSubAcciones.setText("Subir acciones");
+        bttSubAcciones.setText("Agregar Imagenes");
         bttSubAcciones.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         bttSubAcciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +138,7 @@ public class MenuInicio extends javax.swing.JFrame {
                     .addComponent(Menubtt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Menubtt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(OpMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,8 +225,9 @@ public class MenuInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void bttSubAccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttSubAccionesActionPerformed
-    Path rutaImagen = Paths.get("C:\\Users\\Usuario\\Documents\\Procesos\\ProyectoAsistenteComunicacinal\\AsistenteComunicacion\\imagenes\\istockphoto-507024280-612x612.jpg").toAbsolutePath();
-    AccionServicio.guardarImagenEnMongo(4, rutaImagen.toString());
+//    Path rutaImagen = Paths.get("C:\\Users\\Usuario\\Pictures\\fondo1.jpg").toAbsolutePath();
+//    AccionServicio.guardarImagenEnMongo(4, rutaImagen.toString());
+
 
     }//GEN-LAST:event_bttSubAccionesActionPerformed
 

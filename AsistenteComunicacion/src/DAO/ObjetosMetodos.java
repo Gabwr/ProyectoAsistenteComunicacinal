@@ -91,7 +91,7 @@ public List<Objeto> CargarObjeto() {
     List<Objeto> listaObjetos = new ArrayList<>();
 
     for (Document documento : documentos) {
-        int idAccion = documento.getInteger("_idAccion", -1); 
+        int idAccion = documento.getInteger("_idAccion", -1);  
         int idObjeto = documento.getInteger("_idObjeto", -1);
         String encodedString = documento.getString("imagen");
         

@@ -12,10 +12,20 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Kathy/Desktop/ESPE/Cuarto/modelos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/MODELO/Persona.java</file>
-            <file>file:/C:/Users/Kathy/Desktop/ESPE/Cuarto/modelos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/CONTROLADOR/ServicioPersona.java</file>
-            <file>file:/C:/Users/Kathy/Desktop/ESPE/Cuarto/modelos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/DAO/PersonaMetodos.java</file>
-            <file>file:/C:/Users/Kathy/Desktop/ESPE/Cuarto/modelos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/DAO/Ipersona.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Procesos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/VISTA/SubirImagenes.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Procesos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/VISTA/MenuInicio.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Procesos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/mongo/data/base/Conexion.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Procesos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/VISTA/Login.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Procesos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/VISTA/MenuPacientes.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Procesos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/CONTROLADOR/AccionServicio.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Procesos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/DAO/AccionMetodos.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Procesos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/VISTA/Objetos.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Procesos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/DAO/IAccion.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Procesos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/VISTA/Acciones.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Procesos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/DAO/PersonaMetodos.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Procesos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/VISTA/MenuPacienteSeleccionado.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Procesos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/VISTA/ObjetosPersonalizados.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Procesos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/MODELO/Objeto.java</file>
         </group>
     </open-files>
 </project-private>
