@@ -1,6 +1,7 @@
 
 package DAO;
 
+import MODELO.Perfil;
 import MODELO.Persona;
 import java.util.List;
 
@@ -21,5 +22,9 @@ public interface Ipersona {
    public String desencriptar(String contraseniaEncriptada, String contrasenia);
     
    public Persona desencriptaryAutentificar(String usuario, String Contrasenia);
+   
+   public Perfil getperfil(int idperfil);
+   
+   public Persona getpersona(int idpersona);
    
 }

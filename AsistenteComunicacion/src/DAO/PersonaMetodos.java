@@ -28,6 +28,7 @@ import com.mongodb.client.result.UpdateResult;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 
 public class PersonaMetodos implements Ipersona{
@@ -53,6 +54,22 @@ public class PersonaMetodos implements Ipersona{
         } catch (MongoException ex) {
             JOptionPane.showMessageDialog(null, "No se ha podido cerrar la conexión, error: " + ex.toString());
         }
+    }
+    
+    @Override
+    public Persona getpersona(int idpersona){
+         Document persona = (Document) PERSONA.find(eq("id_perfil",idpersona)).first();
+         int IDPersona= persona.getInteger("id_persona");
+            int IDPerfil = persona.getInteger("id_perfil");
+            String usuario = persona.getString("usuario");
+            String nombre = persona.getString("nombre");
+            String estado = persona.getString("estado");
+            Object imgbte= persona.get("img");
+            org.bson.types.Binary binarioimg = (org.bson.types.Binary) imgbte;
+            byte[] img = binarioimg.getData();
+         Persona person= new Persona(IDPersona,IDPerfil, usuario, nombre, estado);
+
+        return person;
     }
     
         @Override
@@ -109,7 +126,9 @@ public class PersonaMetodos implements Ipersona{
                     .append("usuario", persona.getUsuario())
                     .append("nombre", persona.getNombre())
                     .append("contrasenia", persona.getContrasenia())
-                    .append("estado", "activo");
+                    .append("estado", "activo")
+                    .append("img", persona.getImg());
+            
             PERSONA.insertOne(documento);
             return true;
         } catch (MongoException ex) {
@@ -236,4 +255,13 @@ public class PersonaMetodos implements Ipersona{
         return suPersona;
     }
 
+    @Override
+    public Perfil getperfil(int idperfil){
+         Document perfil = (Document) PERFIL.find(eq("id_perfil",idperfil)).first();
+         Perfil perfilOb= new Perfil();
+         
+         perfilOb.setId(perfil.getInteger("id_perfil"));
+         perfilOb.setNombrePerfil(perfil.getString("nombre_perfil"));
+        return perfilOb;
+    }
 }

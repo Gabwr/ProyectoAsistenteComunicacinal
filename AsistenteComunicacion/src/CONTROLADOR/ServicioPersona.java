@@ -1,11 +1,16 @@
 package CONTROLADOR;
 
 import DAO.PersonaMetodos;
+import MODELO.Perfil;
 import MODELO.Persona;
 import java.util.List;
 
 public class ServicioPersona {
     
+    public static Persona getpersona(int idpersona){
+        return new PersonaMetodos().getpersona(idpersona);
+    }
+            
     public static List<Persona> ListaPersona(){
          return new PersonaMetodos().ListaPersona();
     }
@@ -37,5 +42,7 @@ public class ServicioPersona {
     public static Persona desencrpitaryAutentificar(String usuario, String Contrasenia){
         return new PersonaMetodos().desencriptaryAutentificar(usuario, Contrasenia);
     }
-    
+    public static Perfil getperfil(int idperfil){
+        return new PersonaMetodos().getperfil(idperfil);
+    }
 }

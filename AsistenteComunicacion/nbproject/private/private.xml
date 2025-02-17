@@ -12,10 +12,11 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Kathy/Desktop/ESPE/Cuarto/modelos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/MODELO/Persona.java</file>
-            <file>file:/C:/Users/Kathy/Desktop/ESPE/Cuarto/modelos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/CONTROLADOR/ServicioPersona.java</file>
-            <file>file:/C:/Users/Kathy/Desktop/ESPE/Cuarto/modelos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/DAO/PersonaMetodos.java</file>
-            <file>file:/C:/Users/Kathy/Desktop/ESPE/Cuarto/modelos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/DAO/Ipersona.java</file>
+            <file>file:/C:/Users/Kathy/Desktop/ESPE/Cuarto/modelos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/VISTA/ActualizarPersona.java</file>
+            <file>file:/C:/Users/Kathy/Desktop/ESPE/Cuarto/modelos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/VISTA/IngresoPersona.java</file>
+            <file>file:/C:/Users/Kathy/Desktop/ESPE/Cuarto/modelos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/VISTA/MenuAdmin.java</file>
+            <file>file:/C:/Users/Kathy/Desktop/ESPE/Cuarto/modelos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/VISTA/MenuPacientes.java</file>
+            <file>file:/C:/Users/Kathy/Desktop/ESPE/Cuarto/modelos/ProyectoAsistenteComunicacinal/AsistenteComunicacion/src/mongo/data/base/Conexion.java</file>
         </group>
     </open-files>
 </project-private>
