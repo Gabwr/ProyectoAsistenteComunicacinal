@@ -114,9 +114,22 @@ public class ObjetosPersoMetodos implements IObjetosPerso{
          FindIterable<Document> documentos = OBJETOPERSONALIZADO.find(
                  and(eq("idPersona",idPersona),eq("idAccion",idAccion)));
         
-        for (Document documento : documentos){
-            
-        }
+       for (Document documento : documentos) {
+        int idPersonaDoc = documento.getInteger("idPersona", -1);
+        int idAccionDoc = documento.getInteger("idAccion", -1);
+        int idObjetoPerso = documento.getInteger("idObjetoPerso", -1);
+        
+        String encodedString = documento.getString("imagen");
+        byte[] imagen = (encodedString != null) ? Base64.decodeBase64(encodedString) : new byte[0];
+
+        ObjetoPersonalizado objetoPerso = new ObjetoPersonalizado();
+        objetoPerso.setIdPersona(idPersonaDoc);
+        objetoPerso.setIdAccion(idAccionDoc);
+        objetoPerso.setIdObjetoPerso(idObjetoPerso);
+        objetoPerso.setImagen(imagen);
+
+        listaObjetoPerso.add(objetoPerso);
     }
-    
+   return listaObjetoPerso;
+}
 }
