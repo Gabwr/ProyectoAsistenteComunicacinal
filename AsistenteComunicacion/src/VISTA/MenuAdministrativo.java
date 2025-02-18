@@ -84,6 +84,11 @@ public class MenuAdministrativo extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tbdatos);
 
         ingreso.setText("Ingresar nueva persona");
+        ingreso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresoActionPerformed(evt);
+            }
+        });
 
         actualizar.setText("Actualizar Persona");
         actualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -183,8 +188,6 @@ public class MenuAdministrativo extends javax.swing.JFrame {
             ActualizarPersona actualizar = new ActualizarPersona();
             escritorio.add(actualizar);
             actualizar.setVisible(true);
-
-            actualizar.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione la fila que desea actualizar");
         }
@@ -193,6 +196,14 @@ public class MenuAdministrativo extends javax.swing.JFrame {
     private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_regresarActionPerformed
+
+    private void ingresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresoActionPerformed
+        // TODO add your handling code here:
+        IngresoPersona ingreso = new IngresoPersona();
+        escritorio.add(ingreso);
+            ingreso.setVisible(true);
+
+    }//GEN-LAST:event_ingresoActionPerformed
 
     /**
      * @param args the command line arguments

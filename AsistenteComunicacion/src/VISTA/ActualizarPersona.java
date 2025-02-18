@@ -6,6 +6,12 @@ package VISTA;
 
 import DAO.PersonaMetodos;
 import MODELO.Persona;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -38,7 +44,7 @@ public class ActualizarPersona extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        JLabelimg = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(224, 98, 4));
 
@@ -53,8 +59,13 @@ public class ActualizarPersona extends javax.swing.JInternalFrame {
         jButton2.setText("Salir");
 
         jButton3.setText("Seleccionar Imagen");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setText("Seleccionar Imagen");
+        JLabelimg.setText("Seleccionar Imagen");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -69,7 +80,7 @@ public class ActualizarPersona extends javax.swing.JInternalFrame {
                                 .addGap(31, 31, 31)
                                 .addComponent(jButton3)
                                 .addGap(35, 35, 35)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(JLabelimg, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -98,7 +109,7 @@ public class ActualizarPersona extends javax.swing.JInternalFrame {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JLabelimg, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -127,14 +138,40 @@ public class ActualizarPersona extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
+    fileChooser.setFileFilter(new FileNameExtensionFilter("Imágenes JPG y PNG", "jpg", "png"));
+
+    int seleccion = fileChooser.showOpenDialog(this);
+    if (seleccion == javax.swing.JFileChooser.APPROVE_OPTION) {
+        File archivoSeleccionado = fileChooser.getSelectedFile();
+        String rutaArchivo = archivoSeleccionado.getAbsolutePath();
+        System.out.println("Ruta seleccionada: " + rutaArchivo);
+
+        try {
+            Image img = ImageIO.read(archivoSeleccionado);
+            if (img != null) {
+                ImageIcon icono = new ImageIcon(img.getScaledInstance(JLabelimg.getWidth(), JLabelimg.getHeight(), Image.SCALE_SMOOTH));
+                JLabelimg.setIcon(icono);
+            } else {
+                System.out.println("No se pudo leer la imagen.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } else {
+        System.out.println("No se seleccionó ningún archivo.");
+    }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JLabelimg;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> perfiles;
     private javax.swing.JTextField txtnombre;
