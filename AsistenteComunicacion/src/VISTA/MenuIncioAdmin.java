@@ -1,22 +1,30 @@
 
 package VISTA;
 
+import CONTROLADOR.ServicioPersona;
+import MODELO.Persona;
+
 
 public class MenuIncioAdmin extends javax.swing.JFrame {
-
-    public MenuIncioAdmin() {
+    private Persona person;
+    public MenuIncioAdmin(int id) {
         initComponents();
         OpMenu.setVisible(false);
         Menubtt1.setVisible(false);
+        cargarnombre(id);
     }
 
+        public void cargarnombre(int id){
+        person = ServicioPersona.getpersona(id);
+        bienvenida.setText("Bienvenido: "+person.getNombre());
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        Bienvenida = new javax.swing.JPanel();
         OpMenu = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -24,6 +32,7 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
         bttUsers = new javax.swing.JButton();
         Menubtt1 = new javax.swing.JButton();
         Menubtt = new javax.swing.JButton();
+        bienvenida = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -36,9 +45,9 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(null);
 
-        jPanel4.setBackground(new java.awt.Color(224, 98, 4));
-        jPanel4.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        jPanel4.setPreferredSize(new java.awt.Dimension(250, 500));
+        Bienvenida.setBackground(new java.awt.Color(224, 98, 4));
+        Bienvenida.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Bienvenida.setPreferredSize(new java.awt.Dimension(250, 500));
 
         OpMenu.setBackground(new java.awt.Color(255, 51, 0));
         OpMenu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -116,32 +125,40 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        bienvenida.setText("Bienvenida");
+
+        javax.swing.GroupLayout BienvenidaLayout = new javax.swing.GroupLayout(Bienvenida);
+        Bienvenida.setLayout(BienvenidaLayout);
+        BienvenidaLayout.setHorizontalGroup(
+            BienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BienvenidaLayout.createSequentialGroup()
                 .addContainerGap(49, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(BienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Menubtt1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Menubtt, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(OpMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49))
+            .addGroup(BienvenidaLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(bienvenida)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        BienvenidaLayout.setVerticalGroup(
+            BienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BienvenidaLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(Menubtt1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Menubtt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(OpMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(256, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
+                .addComponent(bienvenida)
+                .addGap(22, 22, 22))
         );
 
-        jPanel1.add(jPanel4);
-        jPanel4.setBounds(0, 0, 250, 500);
+        jPanel1.add(Bienvenida);
+        Bienvenida.setBounds(0, 0, 250, 500);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(550, 500));
@@ -214,42 +231,12 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseClicked
 
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuIncioAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuIncioAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuIncioAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuIncioAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MenuIncioAdmin().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Bienvenida;
     private javax.swing.JButton Menubtt;
     private javax.swing.JButton Menubtt1;
     private javax.swing.JPanel OpMenu;
+    private javax.swing.JLabel bienvenida;
     private javax.swing.JButton bttUsers;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -258,6 +245,5 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }

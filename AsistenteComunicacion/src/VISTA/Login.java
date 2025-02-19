@@ -167,18 +167,14 @@ public class Login extends javax.swing.JFrame {
                 if(usuario.equals(contrasenia)){
                     JOptionPane.showMessageDialog(null, "Como Usuario Nuevo, ingrese una nueva contraseña porfavor");
                     ActualizarContrasenia newpass = new ActualizarContrasenia(personacomparada);
-                    escritorio.add(newpass);
                     newpass.setVisible(true);
                     this.dispose(); 
-                }
-                if(personacomparada.getIdPerfil()==1){
-                    MenuIncioAdmin menuAdmin = new MenuIncioAdmin();
-                    escritorio.add(menuAdmin);
+                }else if(personacomparada.getIdPerfil()==1){
+                    MenuIncioAdmin menuAdmin = new MenuIncioAdmin(personacomparada.getIdPersona());
                     menuAdmin.setVisible(true);
                     this.dispose();
                 }else{
-                MenuInicio menuTutor = new MenuInicio();
-                    escritorio.add(menuTutor);
+                MenuInicio menuTutor = new MenuInicio(personacomparada.getIdPersona());
                     menuTutor.setVisible(true);
                     this.dispose();
                 }                

@@ -198,6 +198,8 @@ public class MenuAdministrativo extends javax.swing.JFrame {
     }//GEN-LAST:event_actualizarActionPerformed
 
     private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
+    MenuIncioAdmin back = new MenuIncioAdmin();
+    back.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_regresarActionPerformed
 

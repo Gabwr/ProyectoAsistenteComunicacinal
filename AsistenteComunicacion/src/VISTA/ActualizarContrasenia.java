@@ -95,9 +95,8 @@ Persona personactualizar = null;
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
-        this.dispose();
+
         Login log = new Login();
-        escritorio.add(log);
         log.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_RegresarActionPerformed
@@ -111,6 +110,8 @@ Persona personactualizar = null;
                 String contraseniaEncritada = ServicioPersona.encriptar(psfnuevoContra.getText());
                 if( ServicioPersona.ActualizarContrasenia(contraseniaEncritada, personactualizar))
                 {JOptionPane.showMessageDialog(null, "Contrasena Actualizada");
+                Login log = new Login();
+                log.setVisible(true);
             }
             }
         }
