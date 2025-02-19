@@ -209,7 +209,7 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bttUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttUsersActionPerformed
-    MenuAdministrativo menuAd = new MenuAdministrativo();
+    MenuAdministrativo menuAd = new MenuAdministrativo(person.getIdPersona());
     menuAd.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_bttUsersActionPerformed

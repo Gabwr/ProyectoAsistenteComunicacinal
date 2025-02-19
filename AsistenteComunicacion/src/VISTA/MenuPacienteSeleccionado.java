@@ -4,17 +4,19 @@
  */
 package VISTA;
 
+import CONTROLADOR.ServicioPersona;
+import MODELO.Persona;
+
 /**
  *
  * @author EDWARICHSNAKE
  */
 public class MenuPacienteSeleccionado extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MenuPacienteSeleccionado
-     */
-    public MenuPacienteSeleccionado() {
+    private Persona paciente;
+    public MenuPacienteSeleccionado(int idpaciente) {
         initComponents();
+        paciente=ServicioPersona.getpersona(idpaciente);
     }
 
     /**

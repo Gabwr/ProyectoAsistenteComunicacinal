@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package VISTA;
 
 import CONTROLADOR.ServicioPersona;
@@ -33,8 +29,6 @@ public class ActualizarPersona extends javax.swing.JInternalFrame {
         persona= new ServicioPersona().getpersona(id);
         llenarCampos();
         this.menuAdmin = menuAdmin; 
-        
-        
     }
     
     public void mostrarImagenDesdeBytes(byte[] imagenBytes){

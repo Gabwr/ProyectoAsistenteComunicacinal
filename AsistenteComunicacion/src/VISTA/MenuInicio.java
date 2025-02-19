@@ -241,11 +241,9 @@ public class MenuInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void bttSubAccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttSubAccionesActionPerformed
-        SubirImagenes imagen = new SubirImagenes();
+        SubirImagenes imagen = new SubirImagenes(person.getIdPersona());
         imagen.setVisible(true);
         setEnabled(false);
-    
-
     }//GEN-LAST:event_bttSubAccionesActionPerformed
 
     private void bttSubAcciones1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttSubAcciones1ActionPerformed
