@@ -67,19 +67,19 @@ public class ObjetosMetodos implements IObjetos{
     @Override
 public boolean guardarImagenEnMongo(int idAccion, int idObjeto, String rutaImagen) {
     try {
-        
+       
         String extension = rutaImagen.substring(rutaImagen.lastIndexOf('.') + 1).toLowerCase();
         if (!extension.equals("jpg") && !extension.equals("jpeg") && !extension.equals("png")) {
             System.out.println("Formato de imagen no compatible. Solo se aceptan .jpg, .jpeg, .png");
             return false;
         }
 
-       
+        
         File file = new File(rutaImagen);
         byte[] fileContent = Files.readAllBytes(file.toPath()); 
         String encodedString = Base64.encodeBase64String(fileContent); 
 
-      
+       
         Document doc = new Document("_idAccion", idAccion)
                 .append("_idObjeto", idObjeto)
                 .append("imagen", encodedString);
@@ -93,6 +93,7 @@ public boolean guardarImagenEnMongo(int idAccion, int idObjeto, String rutaImage
     }
     return false;
 }
+
 
 
   @Override

@@ -28,7 +28,6 @@ public class Objetos extends javax.swing.JFrame {
     int _iddAccion = 0;
     
     public Objetos() {
-        Acciones accion = new Acciones();
         _iddAccion = Acciones._idAccion; 
         initComponents();
         cargarObjetos(); 
