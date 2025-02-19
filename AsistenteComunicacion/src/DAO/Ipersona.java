@@ -8,7 +8,11 @@ import java.util.List;
 public interface Ipersona {
    
    public List<Persona> ListaPersona();
-          
+   
+   public String userExiste(String usuario);
+   
+   public List<Persona> ListaPacientes(Persona tutor);
+           
    public boolean InsertarPersona(Persona persona);
    
    public boolean ActualizarPersona(Persona persona);
@@ -27,4 +31,5 @@ public interface Ipersona {
    
    public Persona getpersona(int idpersona);
    
+   public boolean ActualizarContrasenia(String contrasenia, Persona perosonactualizar);
 }

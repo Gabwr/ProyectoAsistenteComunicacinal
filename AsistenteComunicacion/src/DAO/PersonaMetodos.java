@@ -25,6 +25,7 @@ import mongo.data.base.Conexion;
 import MODELO.Persona;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.result.UpdateResult;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -48,17 +49,22 @@ public class PersonaMetodos implements Ipersona{
         }
     }
 
-    private void cerrarConexion() {
-        try {
+private void cerrarConexion() {
+    try {
+        if (conn.getMONGO() != null) {
             conn.getMONGO().close();
-        } catch (MongoException ex) {
-            JOptionPane.showMessageDialog(null, "No se ha podido cerrar la conexión, error: " + ex.toString());
+        } else {
+            System.out.println("La conexión ya estaba cerrada o nunca se estableció.");
         }
+    } catch (MongoException ex) {
+        JOptionPane.showMessageDialog(null, "No se ha podido cerrar la conexión, error: " + ex.toString());
     }
+}
+
     
     @Override
     public Persona getpersona(int idpersona){
-         Document persona = (Document) PERSONA.find(eq("id_perfil",idpersona)).first();
+         Document persona = (Document) PERSONA.find(eq("id_persona",idpersona)).first();
          int IDPersona= persona.getInteger("id_persona");
             int IDPerfil = persona.getInteger("id_perfil");
             String usuario = persona.getString("usuario");
@@ -68,6 +74,7 @@ public class PersonaMetodos implements Ipersona{
             org.bson.types.Binary binarioimg = (org.bson.types.Binary) imgbte;
             byte[] img = binarioimg.getData();
          Persona person= new Persona(IDPersona,IDPerfil, usuario, nombre, estado);
+         person.setImg(img);
 
         return person;
     }
@@ -89,6 +96,32 @@ public class PersonaMetodos implements Ipersona{
         return listapersonas;
     }
     
+    public String normalizarTexto(String texto) {
+            return Normalizer.normalize(texto, Normalizer.Form.NFD)
+                     .replaceAll("[^\\p{ASCII}]", "") 
+                     .replaceAll("[^a-zA-Z]", "");
+            }   
+        
+    @Override
+    public String userExiste(String usuario) {
+    String usuarioFiltrado = normalizarTexto(usuario);
+        FindIterable<Document> documentos = PERSONA.find();
+        int cont=0;
+        
+        for (Document documento : documentos) {
+            String usuarioBDFiltrado = normalizarTexto(documento.getString("usuario"));
+            if(usuarioFiltrado.equalsIgnoreCase(usuarioBDFiltrado)){
+                cont++;
+            }
+        }
+        if (cont ==0){
+            return "";
+        }
+        String num = ""+cont;
+        return num;
+    }
+        
+    @Override
     public List<Persona> ListaPacientes(Persona tutor){
         List<Persona> listapacientes = new ArrayList<>();
 
@@ -105,7 +138,7 @@ public class PersonaMetodos implements Ipersona{
             for (Document documento : documentos) {
                 Persona persona = new Persona();
                 persona.setNombre(documento.getString("nombre"));
-                Object imgobj = documento.get("imagen");
+                Object imgobj = documento.get("img");
                 if (imgobj instanceof org.bson.types.Binary) {
                     persona.setImg(((org.bson.types.Binary) imgobj).getData());
                 }
@@ -132,7 +165,7 @@ public class PersonaMetodos implements Ipersona{
             PERSONA.insertOne(documento);
             return true;
         } catch (MongoException ex) {
-            JOptionPane.showMessageDialog(null, "No se ha podido agregar la persona, error: " + ex.toString());
+            JOptionPane.showMessageDialog(null, "No se ha podido agregar la persona");
             return false;
         } finally {
             cerrarConexion();
@@ -224,10 +257,15 @@ public class PersonaMetodos implements Ipersona{
             descifrado.init(Cipher.DECRYPT_MODE, llave);
             byte[] textoPlano = descifrado.doFinal(mensaje);
             desEncriptado = new String(textoPlano, "UTF-8");
+            if(!desEncriptado.equals(contrasenia)){
+                return "";
+            }
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException | InvalidKeyException
                 | NoSuchPaddingException | BadPaddingException | IllegalBlockSizeException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error en la Autentificación");
+           return "";
         } catch (Exception e) {
+            return "";
         }
         return desEncriptado;
     }
@@ -240,16 +278,25 @@ public class PersonaMetodos implements Ipersona{
             filtro = new Document("usuario", usuario);
             resultado = (Document) PERSONA.find(eq("usuario", usuario)).first();
             if (resultado != null) {
+                
                 perfil = PERFIL.find(eq("id_perfil",
                         resultado.getInteger("id_perfil"))).first();
+                String clavedesencriptada= desencriptar(resultado.getString("contrasenia"), Contrasenia);
+                if(clavedesencriptada.isEmpty()){
+                        return null;
+                    }else{
+                        suPersona.setContrasenia(Contrasenia);
+                    }
                     suPersona.setIdPerfil(perfil.getInteger("id_perfil"));
                     suPersona.setUsuario(usuario);
-                    suPersona.setContrasenia(Contrasenia);
+                    suPersona.setIdPersona(resultado.getInteger("id_persona"));
+                    
+                           
             } else {
                 return null;
             }
         } catch (MongoException ex) {
-            JOptionPane.showMessageDialog(null, "No se ha podido encontrar el usuario, error: " + ex.toString());
+            JOptionPane.showMessageDialog(null, "No se ha podido encontrar el usuario, error: ");
             return null;
         }
         return suPersona;
@@ -264,4 +311,23 @@ public class PersonaMetodos implements Ipersona{
          perfilOb.setNombrePerfil(perfil.getString("nombre_perfil"));
         return perfilOb;
     }
+    
+    @Override
+    public boolean ActualizarContrasenia(String contrasenia, Persona perosonactualizar) {
+        Document filtro, actualizar;
+        UpdateResult resultado;
+        boolean actualizo = false;
+        try {
+            filtro = new Document("id_persona", perosonactualizar.getIdPersona());
+            actualizar = new Document("$set", new Document("contrasenia", contrasenia));
+            resultado = PERSONA.updateOne(filtro, actualizar);
+            if (resultado.getModifiedCount() > 0) {
+                actualizo = true;
+            }
+        } catch (MongoException ex) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar la clave" + ex.toString());
+        }
+        return actualizo;
+    }
+    
 }

@@ -2,12 +2,9 @@ package VISTA;
 
 import CONTROLADOR.ServicioPersona;
 import MODELO.Persona;
+import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Login
-     */
     public Login() {
         initComponents();
     }
@@ -16,7 +13,7 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        escritorio = new javax.swing.JPanel();
         Derecha = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -31,9 +28,9 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LOGIN");
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
-        jPanel1.setLayout(null);
+        escritorio.setBackground(new java.awt.Color(255, 255, 255));
+        escritorio.setPreferredSize(new java.awt.Dimension(800, 500));
+        escritorio.setLayout(null);
 
         Derecha.setBackground(new java.awt.Color(224, 98, 4));
         Derecha.setPreferredSize(new java.awt.Dimension(400, 500));
@@ -67,7 +64,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(203, Short.MAX_VALUE))
         );
 
-        jPanel1.add(Derecha);
+        escritorio.add(Derecha);
         Derecha.setBounds(0, 0, 400, 500);
 
         Izquierda.setPreferredSize(new java.awt.Dimension(400, 500));
@@ -136,7 +133,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(140, Short.MAX_VALUE))
         );
 
-        jPanel1.add(Izquierda);
+        escritorio.add(Izquierda);
         Izquierda.setBounds(400, 0, 400, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -144,17 +141,17 @@ public class Login extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel1.getAccessibleContext().setAccessibleName("");
+        escritorio.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -166,10 +163,30 @@ public class Login extends javax.swing.JFrame {
             usuario = txtUsuario.getText();
             contrasenia = txtContrasenia.getText();
             Persona personacomparada = ServicioPersona.desencrpitaryAutentificar(usuario, contrasenia);
-            
             if (personacomparada != null){
-                System.out.println(personacomparada.toString());
+                if(usuario.equals(contrasenia)){
+                    JOptionPane.showMessageDialog(null, "Como Usuario Nuevo, ingrese una nueva contraseña porfavor");
+                    ActualizarContrasenia newpass = new ActualizarContrasenia(personacomparada);
+                    escritorio.add(newpass);
+                    newpass.setVisible(true);
+                    this.dispose(); 
+                }
+                if(personacomparada.getIdPerfil()==1){
+                    MenuIncioAdmin menuAdmin = new MenuIncioAdmin();
+                    escritorio.add(menuAdmin);
+                    menuAdmin.setVisible(true);
+                    this.dispose();
+                }else{
+                MenuInicio menuTutor = new MenuInicio();
+                    escritorio.add(menuTutor);
+                    menuTutor.setVisible(true);
+                    this.dispose();
+                }                
+            }else{
+                JOptionPane.showMessageDialog(null, "Contraseña Incorrecta");
             }
+        }else{
+            JOptionPane.showMessageDialog(null, "Ingrese un Usuario o Contraseña para Ingresar");
         }
     }//GEN-LAST:event_IngresarActionPerformed
 
@@ -209,12 +226,12 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel Derecha;
     private javax.swing.JButton Ingresar;
     private javax.swing.JPanel Izquierda;
+    private javax.swing.JPanel escritorio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField txtContrasenia;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

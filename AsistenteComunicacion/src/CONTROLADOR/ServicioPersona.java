@@ -14,6 +14,13 @@ public class ServicioPersona {
     public static List<Persona> ListaPersona(){
          return new PersonaMetodos().ListaPersona();
     }
+    public static String userExiste(String usuario){
+            return new PersonaMetodos().userExiste(usuario);
+    }
+   
+   public static List<Persona> ListaPacientes(Persona tutor){
+       return new PersonaMetodos().ListaPacientes(tutor);
+   }
      
     public static boolean InsertarPersona(Persona persona){
         return new PersonaMetodos().InsertarPersona(persona);
@@ -45,4 +52,9 @@ public class ServicioPersona {
     public static Perfil getperfil(int idperfil){
         return new PersonaMetodos().getperfil(idperfil);
     }
+    
+    public static boolean ActualizarContrasenia(String contrasenia, Persona perosonactualizar){
+        return new PersonaMetodos().ActualizarContrasenia(contrasenia, perosonactualizar);
+    }
+
 }
