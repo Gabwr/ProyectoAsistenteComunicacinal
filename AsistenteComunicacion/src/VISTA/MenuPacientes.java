@@ -230,20 +230,20 @@ public class MenuPacientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Paciente1PjMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Paciente1PjMouseClicked
-        MenuPacienteSeleccionado Paciente = new MenuPacienteSeleccionado();
-        Paciente.setVisible(true);
+        Acciones Accion = new Acciones();
+        Accion.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_Paciente1PjMouseClicked
 
     private void Paciente2PjMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Paciente2PjMouseClicked
-        MenuPacienteSeleccionado Paciente = new MenuPacienteSeleccionado();
-        Paciente.setVisible(true);
+        Acciones Accion = new Acciones();
+        Accion.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_Paciente2PjMouseClicked
 
     private void Paciente3PjMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Paciente3PjMouseClicked
-        MenuPacienteSeleccionado Paciente = new MenuPacienteSeleccionado();
-        Paciente.setVisible(true);
+        Acciones Accion = new Acciones();
+        Accion.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_Paciente3PjMouseClicked
 

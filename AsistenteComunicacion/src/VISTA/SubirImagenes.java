@@ -62,7 +62,7 @@ private int contarObjetos() {
             }
         });
 
-        jLabel1.setText("Suba la imagen en formato jpg");
+        jLabel1.setText("Suba la imagen en\n formato jpg,jpeg o png");
 
         bttExploradorArchivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagen_2025-02-17_095722923.png"))); // NOI18N
         bttExploradorArchivos.addActionListener(new java.awt.event.ActionListener() {
@@ -92,13 +92,13 @@ private int contarObjetos() {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCBAccion, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(37, 37, 37)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bttExploradorArchivos, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(146, 146, 146)
                         .addComponent(bttSubir)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(37, 37, 37))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel2)
@@ -112,10 +112,12 @@ private int contarObjetos() {
                 .addGap(35, 35, 35)
                 .addComponent(jCBAccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bttExploradorArchivos)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(bttExploradorArchivos)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(bttSubir)
                 .addGap(33, 33, 33))
         );
@@ -163,17 +165,18 @@ private int contarObjetos() {
     }//GEN-LAST:event_bttSubirActionPerformed
 
     private void bttExploradorArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttExploradorArchivosActionPerformed
-        javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
-    fileChooser.setFileFilter(new FileNameExtensionFilter("Imágenes JPG", "jpg"));
+   javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
+fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Imágenes JPG, JPEG, PNG", "jpg", "jpeg", "png"));
 
-    int seleccion = fileChooser.showOpenDialog(this);
-    if (seleccion == javax.swing.JFileChooser.APPROVE_OPTION) {
-        File archivoSeleccionado = fileChooser.getSelectedFile();
-        rutaArchivo = archivoSeleccionado.getAbsolutePath();
-        System.out.println("Ruta seleccionada: " + rutaArchivo);
-    } else {
-        System.out.println("No se seleccionó ningún archivo.");
-    }
+int seleccion = fileChooser.showOpenDialog(this);
+if (seleccion == javax.swing.JFileChooser.APPROVE_OPTION) {
+    File archivoSeleccionado = fileChooser.getSelectedFile();
+    rutaArchivo = archivoSeleccionado.getAbsolutePath();
+    System.out.println("Ruta seleccionada: " + rutaArchivo);
+} else {
+    System.out.println("No se seleccionó ningún archivo.");
+}
+
     }//GEN-LAST:event_bttExploradorArchivosActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed

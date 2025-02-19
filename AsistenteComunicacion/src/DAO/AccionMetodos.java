@@ -58,24 +58,34 @@ public class AccionMetodos implements IAccion{
     }
 
 
-    @Override
-    public boolean guardarImagenEnMongo(int idAccion, String rutaImagen) {
-        try {
-            File file = new File(rutaImagen);
-            byte[] fileContent = Files.readAllBytes(file.toPath()); 
-            String encodedString = Base64.encodeBase64String(fileContent); 
-            Document doc = new Document("_idAccion", idAccion)
-                    .append("imagen", encodedString);
+   @Override
+public boolean guardarImagenEnMongo(int idAccion, String rutaImagen) {
+    try {
+        File file = new File(rutaImagen);
+        String fileName = file.getName().toLowerCase();
 
-            ACCION.insertOne(doc); 
-            return true;
-        } catch (MongoException e) {
-            System.out.println("Error al guardar en MongoDB: " + e.getMessage());
-        } catch (IOException ex) {
-            Logger.getLogger(AccionMetodos.class.getName()).log(Level.SEVERE, null, ex);
+        
+        if (!(fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") || fileName.endsWith(".png"))) {
+            System.out.println("Formato no permitido. Solo se aceptan imágenes en .jpg, .jpeg y .png");
+            return false;
         }
-        return false;
+
+        byte[] fileContent = Files.readAllBytes(file.toPath()); 
+        String encodedString = Base64.encodeBase64String(fileContent); 
+        
+        Document doc = new Document("_idAccion", idAccion)
+                .append("imagen", encodedString);
+
+        ACCION.insertOne(doc); 
+        return true;
+    } catch (MongoException e) {
+        System.out.println("Error al guardar en MongoDB: " + e.getMessage());
+    } catch (IOException ex) {
+        Logger.getLogger(AccionMetodos.class.getName()).log(Level.SEVERE, null, ex);
     }
+    return false;
+}
+
 
   @Override
 public List<Accion> CargarAccion() {

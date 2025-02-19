@@ -37,6 +37,7 @@ public class MenuInicio extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         bttSubAcciones = new javax.swing.JButton();
+        bttPacientes = new javax.swing.JButton();
         Menubtt1 = new javax.swing.JButton();
         Menubtt = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -81,6 +82,15 @@ public class MenuInicio extends javax.swing.JFrame {
             }
         });
 
+        bttPacientes.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
+        bttPacientes.setText("Pacientes");
+        bttPacientes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        bttPacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttPacientesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout OpMenuLayout = new javax.swing.GroupLayout(OpMenu);
         OpMenu.setLayout(OpMenuLayout);
         OpMenuLayout.setHorizontalGroup(
@@ -91,7 +101,8 @@ public class MenuInicio extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bttSubAcciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bttSubAcciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bttPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         OpMenuLayout.setVerticalGroup(
@@ -105,7 +116,9 @@ public class MenuInicio extends javax.swing.JFrame {
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bttSubAcciones)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bttPacientes)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Menubtt1.setBackground(new java.awt.Color(255, 102, 51));
@@ -149,7 +162,7 @@ public class MenuInicio extends javax.swing.JFrame {
                 .addComponent(Menubtt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(OpMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addContainerGap(259, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel4);
@@ -232,6 +245,12 @@ public class MenuInicio extends javax.swing.JFrame {
 
     }//GEN-LAST:event_bttSubAccionesActionPerformed
 
+    private void bttPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttPacientesActionPerformed
+      MenuPacientes paciente = new MenuPacientes();
+        paciente.setVisible(true);
+        setEnabled(false);
+    }//GEN-LAST:event_bttPacientesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -271,6 +290,7 @@ public class MenuInicio extends javax.swing.JFrame {
     private javax.swing.JButton Menubtt;
     private javax.swing.JButton Menubtt1;
     private javax.swing.JPanel OpMenu;
+    private javax.swing.JButton bttPacientes;
     private javax.swing.JButton bttSubAcciones;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
