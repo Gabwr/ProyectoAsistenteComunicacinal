@@ -97,6 +97,6 @@ public class Persona {
     
     @Override
     public String toString(){
-        return usuario+IdPerfil;
+        return usuario+idPersona;
     }
 }

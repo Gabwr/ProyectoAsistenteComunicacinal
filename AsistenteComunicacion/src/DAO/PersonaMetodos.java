@@ -138,6 +138,7 @@ private void cerrarConexion() {
             for (Document documento : documentos) {
                 Persona persona = new Persona();
                 persona.setNombre(documento.getString("nombre"));
+                persona.setIdPersona(documento.getInteger("id_persona"));
                 Object imgobj = documento.get("img");
                 if (imgobj instanceof org.bson.types.Binary) {
                     persona.setImg(((org.bson.types.Binary) imgobj).getData());

@@ -27,6 +27,7 @@ public class Acciones extends javax.swing.JFrame {
     private boolean sliderActivo = true;
     public static int _idAccion = 0;
     private Persona paciente;
+    private Persona tutor;
      public Acciones() {
         initComponents();
         cargarAcciones();
@@ -36,8 +37,9 @@ public class Acciones extends javax.swing.JFrame {
        
     }
      
-    public Acciones(int id) {
-        paciente=ServicioPersona.getpersona(id);
+    public Acciones(int idpaciente, int idtutor) {
+        paciente=ServicioPersona.getpersona(idpaciente);
+        tutor=ServicioPersona.getpersona(idtutor);
         initComponents();
         cargarAcciones();
         mostrarImagenActual();
@@ -76,7 +78,6 @@ public class Acciones extends javax.swing.JFrame {
             idAccion.setText("ID no disponible");
             _idAccion = 0;
         }
-        System.out.println("ID Actual: " + _idAccion); 
     }
 }
 
@@ -133,6 +134,7 @@ private void anteriorImagen() {
         Rigth = new javax.swing.JLabel();
         idAccion = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        regresar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMRegresar = new javax.swing.JMenuItem();
@@ -184,35 +186,48 @@ private void anteriorImagen() {
         jLabel1.setFont(new java.awt.Font("Serif", 2, 36)); // NOI18N
         jLabel1.setText("ACCIONES");
 
+        regresar.setText("Regresar");
+        regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(idAccion))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(Left)))
-                .addGap(36, 36, 36)
-                .addComponent(jLIMAGENES, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89)
-                .addComponent(Rigth)
-                .addContainerGap(184, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(525, 525, 525))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(idAccion))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(83, 83, 83)
+                                .addComponent(Left)))
+                        .addGap(36, 36, 36)
+                        .addComponent(jLIMAGENES, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(89, 89, 89)
+                        .addComponent(Rigth)
+                        .addGap(0, 178, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(325, 325, 325)
+                        .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(98, 98, 98)
                         .addComponent(idAccion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -220,7 +235,7 @@ private void anteriorImagen() {
                             .addComponent(Rigth)
                             .addComponent(Left)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addGap(135, 135, 135)
                         .addComponent(jLIMAGENES, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(315, Short.MAX_VALUE))
         );
@@ -270,7 +285,7 @@ private void anteriorImagen() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMRegresarActionPerformed
-       MenuPacienteSeleccionado Paciente = new MenuPacienteSeleccionado(paciente.getIdPersona());
+       MenuPacientes Paciente = new MenuPacientes(tutor.getIdPersona());
         Paciente.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jMRegresarActionPerformed
@@ -317,6 +332,12 @@ private void anteriorImagen() {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMPersonalizadoActionPerformed
 
+    private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
+       MenuPacientes Paciente = new MenuPacientes(tutor.getIdPersona());
+        Paciente.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_regresarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Left;
@@ -331,5 +352,6 @@ private void anteriorImagen() {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton regresar;
     // End of variables declaration//GEN-END:variables
 }

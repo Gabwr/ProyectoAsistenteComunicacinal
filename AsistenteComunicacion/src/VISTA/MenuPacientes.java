@@ -31,7 +31,6 @@ public class MenuPacientes extends javax.swing.JFrame {
     
     public void CrearPersonas(int id){
         person = ServicioPersona.getpersona(id);
-        JOptionPane.showMessageDialog(null, person.getIdPersona());
         pacientes = ServicioPersona.ListaPacientes(person);
         if (pacientes.isEmpty()) {
             JOptionPane.showMessageDialog(null, "lista vacia");
@@ -322,64 +321,64 @@ private void setImagenPaciente(JLabel label, JLabel nombre, Persona paciente) {
 
     private void Paciente1PjMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Paciente1PjMouseClicked
         pacienteSeleccionado=pacientes.get(0);
-        MenuPacienteSeleccionado Paciente = new MenuPacienteSeleccionado(pacienteSeleccionado.getIdPersona());
+        MenuPacienteSeleccionado Paciente = new MenuPacienteSeleccionado(pacienteSeleccionado.getIdPersona(),person.getIdPersona());
         Paciente.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_Paciente1PjMouseClicked
 
     private void Paciente2PjMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Paciente2PjMouseClicked
         pacienteSeleccionado=pacientes.get(1);
-        MenuPacienteSeleccionado Paciente = new MenuPacienteSeleccionado(pacienteSeleccionado.getIdPersona());
+        MenuPacienteSeleccionado Paciente = new MenuPacienteSeleccionado(pacienteSeleccionado.getIdPersona(),person.getIdPersona());
         Paciente.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_Paciente2PjMouseClicked
 
     private void Paciente3PjMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Paciente3PjMouseClicked
         pacienteSeleccionado=pacientes.get(2);
-        MenuPacienteSeleccionado Paciente = new MenuPacienteSeleccionado(pacienteSeleccionado.getIdPersona());
+        Acciones Paciente = new Acciones(pacienteSeleccionado.getIdPersona(),person.getIdPersona());
         Paciente.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_Paciente3PjMouseClicked
 
     private void img1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_img1MouseClicked
        pacienteSeleccionado=pacientes.get(0);
-        MenuPacienteSeleccionado Paciente = new MenuPacienteSeleccionado(pacienteSeleccionado.getIdPersona());
-        Paciente.setVisible(true);
+       Acciones Paciente = new Acciones(pacienteSeleccionado.getIdPersona(),person.getIdPersona());
+       Paciente.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_img1MouseClicked
 
     private void img2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_img2MouseClicked
        pacienteSeleccionado=pacientes.get(1);
-        MenuPacienteSeleccionado Paciente = new MenuPacienteSeleccionado(pacienteSeleccionado.getIdPersona());
-        Paciente.setVisible(true);
+       Acciones Paciente = new Acciones(pacienteSeleccionado.getIdPersona(),person.getIdPersona());
+       Paciente.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_img2MouseClicked
 
     private void img3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_img3MouseClicked
         pacienteSeleccionado=pacientes.get(2);
-        MenuPacienteSeleccionado Paciente = new MenuPacienteSeleccionado(pacienteSeleccionado.getIdPersona());
+        Acciones Paciente = new Acciones(pacienteSeleccionado.getIdPersona(),person.getIdPersona());
         Paciente.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_img3MouseClicked
 
     private void nm1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nm1MouseClicked
        pacienteSeleccionado=pacientes.get(0);
-        MenuPacienteSeleccionado Paciente = new MenuPacienteSeleccionado(pacienteSeleccionado.getIdPersona());
-        Paciente.setVisible(true);
+        Acciones Paciente = new Acciones(pacienteSeleccionado.getIdPersona(),person.getIdPersona());
+       Paciente.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_nm1MouseClicked
 
     private void nm2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nm2MouseClicked
        pacienteSeleccionado=pacientes.get(1);
-        MenuPacienteSeleccionado Paciente = new MenuPacienteSeleccionado(pacienteSeleccionado.getIdPersona());
-        Paciente.setVisible(true);
+        Acciones Paciente = new Acciones(pacienteSeleccionado.getIdPersona(),person.getIdPersona());
+       Paciente.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_nm2MouseClicked
 
     private void nm3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nm3MouseClicked
        pacienteSeleccionado=pacientes.get(2);
-        MenuPacienteSeleccionado Paciente = new MenuPacienteSeleccionado(pacienteSeleccionado.getIdPersona());
-        Paciente.setVisible(true);
+        Acciones Paciente = new Acciones(pacienteSeleccionado.getIdPersona(),person.getIdPersona());
+       Paciente.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_nm3MouseClicked
 

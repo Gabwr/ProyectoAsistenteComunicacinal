@@ -212,10 +212,11 @@ public class MenuAdministrativo extends javax.swing.JFrame {
     }//GEN-LAST:event_ingresoActionPerformed
 
     private void cambiarestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarestadoActionPerformed
-        // TODO add your handling code here:
+
         fila = tbdatos.getSelectedRow();
         if (fila != -1) {
             Persona nueva  = new ServicioPersona().getpersona(Integer.parseInt(tbdatos.getValueAt(fila, 0).toString()));
+            System.out.println(nueva.toString());
             if(nueva.getEstado().equalsIgnoreCase("activo")){
                 ServicioPersona.ActivarPersona(nueva);
                 consultarDatos();
