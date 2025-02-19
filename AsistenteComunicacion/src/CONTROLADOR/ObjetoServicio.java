@@ -13,11 +13,17 @@ public class ObjetoServicio {
     public static  List<Objeto> CargarObjeto(){
          return new ObjetosMetodos().CargarObjeto();
      }
-     public static boolean guardarImagenEnMongo(int idAccion, int idObjeto ,String rutaImagen){
-         return new ObjetosMetodos().guardarImagenEnMongo(idAccion,idObjeto,rutaImagen);
+     public static boolean guardarImagenEnMongo(int idAccion, int idObjeto ,String rutaImagen, String NombreObjeto){
+         return new ObjetosMetodos().guardarImagenEnMongo(idAccion,idObjeto,rutaImagen,NombreObjeto);
      }
   
     public static List<Objeto> CargarObjetosPorAccion(int _idAccion) {
         return new ObjetosMetodos().CargarObjetosPorAccion(_idAccion);
     }
+    
+    public static Objeto buscarObjetoPorNombre(int idAccion, String nombre) {
+    ObjetosMetodos objetosMetodos = new ObjetosMetodos();
+    return objetosMetodos.buscarObjetoPorNombre(idAccion, nombre);
+}
+
 }

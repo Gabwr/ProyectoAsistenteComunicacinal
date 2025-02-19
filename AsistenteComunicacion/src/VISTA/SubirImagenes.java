@@ -150,7 +150,7 @@ private int contarObjetos() {
     }//GEN-LAST:event_jCBAccionActionPerformed
 
     private void bttSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttSubirActionPerformed
-     if (rutaArchivo == null || rutaArchivo.isEmpty()) {
+      if (rutaArchivo == null || rutaArchivo.isEmpty()) {
         System.out.println("Debe seleccionar una imagen antes de subir.");
         return;
     }
@@ -161,9 +161,11 @@ private int contarObjetos() {
 
     int idObjeto = contarObjetos() + 1; 
     Path rutaImagen = Paths.get(rutaArchivo).toAbsolutePath();
+    String nombreCompleto = rutaImagen.getFileName().toString(); // Obtener el nombre del archivo
+    String nombreImagen = nombreCompleto.replaceFirst("[.][^.]+$", ""); // Eliminar la extensión
     
-    ObjetoServicio.guardarImagenEnMongo(idAccion, idObjeto, rutaImagen.toString());
-    System.out.println("Imagen subida correctamente. Nuevo ID: " + idObjeto);
+    ObjetoServicio.guardarImagenEnMongo(idAccion, idObjeto, rutaImagen.toString(), nombreImagen);
+    System.out.println("Imagen subida correctamente. Nuevo ID: " + idObjeto + ", Nombre: " + nombreImagen);
     }//GEN-LAST:event_bttSubirActionPerformed
 
     private void bttExploradorArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttExploradorArchivosActionPerformed

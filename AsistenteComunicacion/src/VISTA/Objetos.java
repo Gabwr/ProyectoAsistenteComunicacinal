@@ -17,6 +17,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 public class Objetos extends javax.swing.JFrame {
@@ -46,35 +47,44 @@ public class Objetos extends javax.swing.JFrame {
 }
 
 
-    private void mostrarImagenActual() {
+  private void mostrarImagenActual() {
     if (objetos != null && !objetos.isEmpty() && indiceActual >= 0 && indiceActual < objetos.size()) {
         try {
-            byte[] imagenBytes = objetos.get(indiceActual).getImagen();
+            Objeto objetoActual = objetos.get(indiceActual);
+            String nombreObjeto = objetoActual.getObjetoNombre();
+            
+            System.out.println("Nombre obtenido: " + nombreObjeto); // Verificar si el nombre llega
+
+            if (nombreObjeto != null && !nombreObjeto.trim().isEmpty()) {
+                jLNombreObj.setText(nombreObjeto); // Asignar el nombre al JLabel
+            } else {
+                System.out.println("No se encontró un nombre para la imagen.");
+                jLNombreObj.setText("Nombre no disponible");
+            }
+
+            byte[] imagenBytes = objetoActual.getImagen();
             if (imagenBytes != null && imagenBytes.length > 0) {
-                System.out.println("Cargando imagen..."); 
+                System.out.println("Cargando imagen...");
                 ByteArrayInputStream bis = new ByteArrayInputStream(imagenBytes);
                 Image img = ImageIO.read(bis);
                 if (img == null) {
-                    System.out.println("Error al leer la imagen. Asegúrate de que el archivo esté en un formato compatible.");
+                    System.out.println("Error al leer la imagen.");
                 } else {
-                    
                     ImageIcon icon = new ImageIcon(img.getScaledInstance(jLIMAGENES.getWidth(), jLIMAGENES.getHeight(), Image.SCALE_SMOOTH));
-                    jLIMAGENES.setIcon(icon); 
+                    jLIMAGENES.setIcon(icon);
                 }
             } else {
                 System.out.println("No se encontraron datos de imagen.");
             }
         } catch (IOException e) {
-            System.out.println("Error al intentar leer los datos de la imagen.");
-            e.printStackTrace();
-        } catch (Exception e) {
-            System.out.println("Ocurrió un error inesperado.");
+            System.out.println("Error al leer la imagen.");
             e.printStackTrace();
         }
     } else {
         System.out.println("No hay objetos disponibles o índice fuera de rango.");
     }
 }
+
 
 
 
@@ -128,6 +138,18 @@ public class Objetos extends javax.swing.JFrame {
         mostrarImagenActual();
         cargarid();
     }
+private void mostrarDatosObjeto(Objeto objeto) {
+    
+    jLNombreObj.setText(objeto.getObjetoNombre());
+   
+    if (objeto.getImagen() != null && objeto.getImagen().length > 0) {
+        ImageIcon icon = new ImageIcon(objeto.getImagen());
+        Image imagen = icon.getImage().getScaledInstance(jLIMAGENES.getWidth(), jLIMAGENES.getHeight(), Image.SCALE_SMOOTH);
+        jLIMAGENES.setIcon(new ImageIcon(imagen));
+    } else {
+        jLIMAGENES.setIcon(null); 
+    }
+}
 
     
        
@@ -149,6 +171,10 @@ public class Objetos extends javax.swing.JFrame {
         IdAccion = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         regresar = new javax.swing.JButton();
+        jLNombreObj = new javax.swing.JLabel();
+        jTBuscarObjeto = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMRegresar = new javax.swing.JMenuItem();
@@ -192,8 +218,6 @@ public class Objetos extends javax.swing.JFrame {
             }
         });
 
-        IdAccion.setText("queso");
-
         jLabel1.setFont(new java.awt.Font("Serif", 2, 36)); // NOI18N
         jLabel1.setText("Objetos");
 
@@ -201,6 +225,25 @@ public class Objetos extends javax.swing.JFrame {
         regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regresarActionPerformed(evt);
+            }
+        });
+
+        jLNombreObj.setFont(new java.awt.Font("Serif", 2, 36)); // NOI18N
+        jLNombreObj.setText("Objetos");
+
+        jTBuscarObjeto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTBuscarObjetoActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
+        jLabel2.setText("Buscar objeto por Nombre");
+
+        jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -214,38 +257,57 @@ public class Objetos extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(jLIMAGENES, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(89, 89, 89)
-                .addComponent(Rigth)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Rigth)
+                    .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(184, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(157, 157, 157)
                 .addComponent(IdAccion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(298, 298, 298)
-                .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLNombreObj, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTBuscarObjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(207, 207, 207))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
+                        .addGap(54, 54, 54)
+                        .addComponent(IdAccion))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(IdAccion))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jLabel2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLNombreObj)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(120, 120, 120)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(Rigth)
-                                    .addComponent(Left)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(jLIMAGENES, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jTBuscarObjeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton1)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(120, 120, 120)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Rigth)
+                            .addComponent(Left))
+                        .addGap(104, 104, 104)
+                        .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLIMAGENES, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(315, Short.MAX_VALUE))
         );
 
@@ -332,19 +394,46 @@ public class Objetos extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_regresarActionPerformed
 
+    private void jTBuscarObjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTBuscarObjetoActionPerformed
+        // Obtener el texto ingresado en el campo de búsqueda
+   
+    }//GEN-LAST:event_jTBuscarObjetoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String nombreObjeto = jTBuscarObjeto.getText().trim();
+    
+
+    // Verificar que no esté vacío
+    if (!nombreObjeto.isEmpty()) {
+        Objeto objetoEncontrado = ObjetoServicio.buscarObjetoPorNombre(_iddAccion, nombreObjeto);
+        
+        if (objetoEncontrado != null) {
+            mostrarDatosObjeto(objetoEncontrado);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró el objeto con el nombre: " + nombreObjeto);
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "Ingrese un nombre de objeto para buscar.");
+    }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IdAccion;
     private javax.swing.JLabel Left;
     private javax.swing.JLabel Rigth;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLIMAGENES;
+    private javax.swing.JLabel jLNombreObj;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMRegresar;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTBuscarObjeto;
     private javax.swing.JButton regresar;
     // End of variables declaration//GEN-END:variables
 }

@@ -65,7 +65,7 @@ public class ObjetosMetodos implements IObjetos{
 
 
     @Override
-public boolean guardarImagenEnMongo(int idAccion, int idObjeto, String rutaImagen) {
+public boolean guardarImagenEnMongo(int idAccion, int idObjeto, String rutaImagen, String NombreObjeto) {
     try {
        
         String extension = rutaImagen.substring(rutaImagen.lastIndexOf('.') + 1).toLowerCase();
@@ -82,7 +82,9 @@ public boolean guardarImagenEnMongo(int idAccion, int idObjeto, String rutaImage
        
         Document doc = new Document("_idAccion", idAccion)
                 .append("_idObjeto", idObjeto)
-                .append("imagen", encodedString);
+                .append("imagen", encodedString)
+                .append("Nombre_Objeto", NombreObjeto)
+                ;
         
         OBJETO.insertOne(doc); 
         return true;
@@ -104,6 +106,7 @@ public List<Objeto> CargarObjeto() {
     for (Document documento : documentos) {
         int idAccion = documento.getInteger("_idAccion", -1);  
         int idObjeto = documento.getInteger("_idObjeto", -1);
+        String nombre= documento.getString("Nombre_Objeto");
         String encodedString = documento.getString("imagen");
         
         if (encodedString != null) {
@@ -112,6 +115,7 @@ public List<Objeto> CargarObjeto() {
             Objeto objeto = new Objeto();
             objeto.setIdAccion(idAccion);
             objeto.setIdObjeto(idObjeto);
+            objeto.setObjetoNombre(nombre);
             objeto.setImagen(imagen);
             listaObjetos.add(objeto);
         } else {
@@ -141,6 +145,7 @@ public List<Objeto> CargarObjeto() {
         
         
         String encodedString = documento.getString("imagen");
+        String nombre= documento.getString("Nombre_Objeto");
 
        
         byte[] imagen = (encodedString != null) ? Base64.decodeBase64(encodedString) : new byte[0];
@@ -149,7 +154,8 @@ public List<Objeto> CargarObjeto() {
         Objeto objeto = new Objeto();
         objeto.setIdAccion(idAccion);  
         objeto.setIdObjeto(idObjeto);  
-        objeto.setImagen(imagen);      
+        objeto.setImagen(imagen);
+        objeto.setObjetoNombre(nombre);
 
         
         listaObjetos.add(objeto);
@@ -158,6 +164,35 @@ public List<Objeto> CargarObjeto() {
     
     return listaObjetos;
 }
+
+    @Override
+    public Objeto buscarObjetoPorNombre(int idAccion, String nombre) {
+    try {
+        Document filtro = new Document("_idAccion", idAccion)
+                          .append("Nombre_Objeto", nombre); 
+        
+        Document documento = OBJETO.find(filtro).first(); 
+        
+        if (documento != null) {
+            int idObjeto = documento.getInteger("_idObjeto", -1);
+            String encodedString = documento.getString("imagen");
+
+            byte[] imagen = (encodedString != null) ? Base64.decodeBase64(encodedString) : new byte[0];
+
+            Objeto objeto = new Objeto();
+            objeto.setIdAccion(idAccion);
+            objeto.setIdObjeto(idObjeto);
+            objeto.setObjetoNombre(nombre);
+            objeto.setImagen(imagen);
+
+            return objeto;
+        }
+    } catch (MongoException e) {
+        System.out.println("Error al buscar objeto: " + e.getMessage());
+    }
+    return null;
+}
+
 }
 
 
