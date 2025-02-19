@@ -65,25 +65,36 @@ public class ObjetosMetodos implements IObjetos{
 
 
     @Override
-    public boolean guardarImagenEnMongo(int idAccion, int idObjeto, String rutaImagen) {
-        try {
-            File file = new File(rutaImagen);
-            byte[] fileContent = Files.readAllBytes(file.toPath()); 
-            String encodedString = Base64.encodeBase64String(fileContent); 
-            Document doc = new Document("_idAccion", idAccion)
-                    .append("_idObjeto", idObjeto)
-                    .append("imagen", encodedString);
-            
-
-            OBJETO.insertOne(doc); 
-            return true;
-        } catch (MongoException e) {
-            System.out.println("Error al guardar en MongoDB: " + e.getMessage());
-        } catch (IOException ex) {
-            Logger.getLogger(AccionMetodos.class.getName()).log(Level.SEVERE, null, ex);
+public boolean guardarImagenEnMongo(int idAccion, int idObjeto, String rutaImagen) {
+    try {
+       
+        String extension = rutaImagen.substring(rutaImagen.lastIndexOf('.') + 1).toLowerCase();
+        if (!extension.equals("jpg") && !extension.equals("jpeg") && !extension.equals("png")) {
+            System.out.println("Formato de imagen no compatible. Solo se aceptan .jpg, .jpeg, .png");
+            return false;
         }
-        return false;
+
+        
+        File file = new File(rutaImagen);
+        byte[] fileContent = Files.readAllBytes(file.toPath()); 
+        String encodedString = Base64.encodeBase64String(fileContent); 
+
+       
+        Document doc = new Document("_idAccion", idAccion)
+                .append("_idObjeto", idObjeto)
+                .append("imagen", encodedString);
+        
+        OBJETO.insertOne(doc); 
+        return true;
+    } catch (MongoException e) {
+        System.out.println("Error al guardar en MongoDB: " + e.getMessage());
+    } catch (IOException ex) {
+        Logger.getLogger(AccionMetodos.class.getName()).log(Level.SEVERE, null, ex);
     }
+    return false;
+}
+
+
 
   @Override
 public List<Objeto> CargarObjeto() {
@@ -95,16 +106,21 @@ public List<Objeto> CargarObjeto() {
         int idObjeto = documento.getInteger("_idObjeto", -1);
         String encodedString = documento.getString("imagen");
         
-        byte[] imagen = (encodedString != null) ? Base64.decodeBase64(encodedString) : new byte[0];
-        
-        Objeto objeto = new Objeto();
-        objeto.setIdAccion(idAccion);
-        objeto.setIdObjeto(idObjeto);
-        objeto.setImagen(imagen);
-        listaObjetos.add(objeto);
+        if (encodedString != null) {
+            byte[] imagen = Base64.decodeBase64(encodedString);
+
+            Objeto objeto = new Objeto();
+            objeto.setIdAccion(idAccion);
+            objeto.setIdObjeto(idObjeto);
+            objeto.setImagen(imagen);
+            listaObjetos.add(objeto);
+        } else {
+            System.out.println("Imagen no encontrada para el objeto con ID: " + idObjeto);
+        }
     }
     return listaObjetos;
 }
+
 
    
     

@@ -87,7 +87,7 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                               <Component id="bienvenida" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -104,9 +104,9 @@
                       <Component id="Menubtt" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="OpMenu" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="206" max="32767" attributes="0"/>
+                      <EmptySpace pref="172" max="32767" attributes="0"/>
                       <Component id="bienvenida" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -134,7 +134,7 @@
                               <Component id="jButton2" alignment="1" max="32767" attributes="0"/>
                               <Component id="jButton3" alignment="1" max="32767" attributes="0"/>
                               <Component id="bttSubAcciones" alignment="0" max="32767" attributes="0"/>
-                              <Component id="bttSubAcciones1" alignment="1" max="32767" attributes="0"/>
+                              <Component id="btpacientes" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -152,7 +152,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="bttSubAcciones" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="bttSubAcciones1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btpacientes" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="7" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -217,7 +217,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttSubAccionesActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="bttSubAcciones1">
+                <Component class="javax.swing.JButton" name="btpacientes">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Sitka Small" size="12" style="0"/>
@@ -230,7 +230,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttSubAcciones1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btpacientesActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

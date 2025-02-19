@@ -21,52 +21,35 @@ Persona personactualizar = null;
     private void initComponents() {
 
         escritorio = new javax.swing.JPanel();
-        Regresar = new javax.swing.JButton();
-        txtUsuario = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        psfnuevoContra = new javax.swing.JPasswordField();
-        psfcontraConfirmar = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtUsuario = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        psfnuevoContra = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
+        psfcontraConfirmar = new javax.swing.JPasswordField();
         Actualizar = new javax.swing.JButton();
+        Regresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         escritorio.setBackground(new java.awt.Color(224, 98, 4));
-        escritorio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Regresar.setText("Regresar");
-        Regresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegresarActionPerformed(evt);
-            }
-        });
-        escritorio.add(Regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, -1, -1));
-
-        txtUsuario.setEditable(false);
-        escritorio.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 88, 165, -1));
-        txtUsuario.getAccessibleContext().setAccessibleName("");
-
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Usuario");
-        escritorio.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 91, -1, -1));
-        escritorio.add(psfnuevoContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 149, -1));
-        escritorio.add(psfcontraConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 149, -1));
-
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nueva Contrasenia");
-        escritorio.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
-
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Confirmar Contraseña ");
-        escritorio.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
 
         jLabel21.setBackground(new java.awt.Color(51, 51, 0));
         jLabel21.setFont(new java.awt.Font("Sitka Banner", 1, 36)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 204, 204));
         jLabel21.setText("Cambiar Contrasenia");
-        escritorio.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, 40));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Usuario");
+
+        txtUsuario.setEditable(false);
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Nueva Contrasenia");
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Confirmar Contraseña ");
 
         Actualizar.setText("Actualizar");
         Actualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -74,21 +57,84 @@ Persona personactualizar = null;
                 ActualizarActionPerformed(evt);
             }
         });
-        escritorio.add(Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, -1, -1));
+
+        Regresar.setText("Regresar");
+        Regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegresarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel21)
+                    .addGroup(escritorioLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel1)
+                        .addGap(26, 26, 26)
+                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(escritorioLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel2)
+                        .addGap(40, 40, 40)
+                        .addComponent(psfnuevoContra, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(escritorioLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel3)
+                        .addGap(20, 20, 20)
+                        .addComponent(psfcontraConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(escritorioLayout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(Actualizar)
+                        .addGap(78, 78, 78)
+                        .addComponent(Regresar)))
+                .addContainerGap())
+        );
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(escritorioLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel1))
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(psfnuevoContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(psfcontraConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Actualizar)
+                    .addComponent(Regresar))
+                .addContainerGap(85, Short.MAX_VALUE))
+        );
+
+        txtUsuario.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
