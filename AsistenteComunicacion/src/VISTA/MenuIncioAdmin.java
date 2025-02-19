@@ -27,8 +27,7 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
         Bienvenida = new javax.swing.JPanel();
         OpMenu = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
         bttUsers = new javax.swing.JButton();
         Menubtt1 = new javax.swing.JButton();
         Menubtt = new javax.swing.JButton();
@@ -61,13 +60,14 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
-        jButton2.setText("Salir");
-        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jButton3.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
-        jButton3.setText("Ajustes");
-        jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        salir.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
+        salir.setText("Salir");
+        salir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
 
         bttUsers.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         bttUsers.setText("Administrar Usuarios");
@@ -86,8 +86,7 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(OpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(salir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bttUsers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -97,10 +96,8 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(salir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addGap(12, 12, 12)
                 .addComponent(bttUsers)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
@@ -152,7 +149,7 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
                 .addComponent(Menubtt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(OpMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 252, Short.MAX_VALUE)
                 .addComponent(bienvenida)
                 .addGap(22, 22, 22))
         );
@@ -230,6 +227,12 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
         OpMenu.setVisible(false);
     }//GEN-LAST:event_jPanel2MouseClicked
 
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        Login regreso = new Login();
+        regreso.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_salirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bienvenida;
@@ -239,11 +242,10 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel bienvenida;
     private javax.swing.JButton bttUsers;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }

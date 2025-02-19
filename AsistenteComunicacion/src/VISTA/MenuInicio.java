@@ -29,7 +29,6 @@ public class MenuInicio extends javax.swing.JFrame {
         OpMenu = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         bttSubAcciones = new javax.swing.JButton();
         btpacientes = new javax.swing.JButton();
         Menubtt1 = new javax.swing.JButton();
@@ -64,10 +63,6 @@ public class MenuInicio extends javax.swing.JFrame {
         jButton2.setText("Salir");
         jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton3.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
-        jButton3.setText("Ajustes");
-        jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
         bttSubAcciones.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         bttSubAcciones.setText("Agregar Imagenes");
         bttSubAcciones.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -82,7 +77,7 @@ public class MenuInicio extends javax.swing.JFrame {
         btpacientes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btpacientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actionPerformed(evt);
+                btpacientesActionPerformed(evt);
             }
         });
 
@@ -95,7 +90,6 @@ public class MenuInicio extends javax.swing.JFrame {
                 .addGroup(OpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bttSubAcciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btpacientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -107,13 +101,11 @@ public class MenuInicio extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bttSubAcciones)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btpacientes)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Menubtt1.setBackground(new java.awt.Color(255, 102, 51));
@@ -164,7 +156,7 @@ public class MenuInicio extends javax.swing.JFrame {
                 .addComponent(Menubtt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(OpMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
                 .addComponent(bienvenida)
                 .addGap(64, 64, 64))
         );
@@ -246,11 +238,12 @@ public class MenuInicio extends javax.swing.JFrame {
         setEnabled(false);
     }//GEN-LAST:event_bttSubAccionesActionPerformed
 
-    private void btPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttPacientesActionPerformed
-      MenuPacientes paciente = new MenuPacientes(person.getIdPersona());
+
+    private void btpacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btpacientesActionPerformed
+       MenuPacientes paciente = new MenuPacientes(person.getIdPersona());
         paciente.setVisible(true);
-        setEnabled(false);
-    }//GEN-LAST:event_bttPacientesActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btpacientesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -262,7 +255,6 @@ public class MenuInicio extends javax.swing.JFrame {
     private javax.swing.JButton bttSubAcciones;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

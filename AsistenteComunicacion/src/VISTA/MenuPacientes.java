@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 public class MenuPacientes extends javax.swing.JFrame {
@@ -29,68 +31,38 @@ public class MenuPacientes extends javax.swing.JFrame {
     
     public void CrearPersonas(int id){
         person = ServicioPersona.getpersona(id);
+        JOptionPane.showMessageDialog(null, person.getIdPersona());
         pacientes = ServicioPersona.ListaPacientes(person);
-        if(pacientes==null){
+        if (pacientes.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "lista vacia");
             return;
+        } else {
+            
         }
         int num=0;
         for(Persona paciente:pacientes){
-            mostrarImagenDesdeBytes(paciente,num);
+            if (num == 0) setImagenPaciente(img1, nm1, paciente);
+            else if (num == 1) setImagenPaciente(img2, nm2, paciente);
+            else if (num == 2) setImagenPaciente(img3, nm3, paciente);
             num++;
             
         }
     }
     
-    public void mostrarImagenDesdeBytes(Persona paciente, int num){
-        byte [] imagenBytes = paciente.getImg();
-        
+private void setImagenPaciente(JLabel label, JLabel nombre, Persona paciente) {
+    byte[] imagenBytes = paciente.getImg();
     if (imagenBytes != null && imagenBytes.length > 0) {
         try {
             ByteArrayInputStream bis = new ByteArrayInputStream(imagenBytes);
             BufferedImage imagenBuffer = ImageIO.read(bis);
-
             if (imagenBuffer != null) {
-                SwingUtilities.invokeLater(() -> {
-                    if (img1.getWidth() > 0 && img1.getHeight() > 0 && num ==0) {
-                        int labelWidth = img1.getWidth();
-                        int labelHeight = img1.getHeight();
-
-                        Image imagenEscalada = imagenBuffer.getScaledInstance(labelWidth, labelHeight, Image.SCALE_SMOOTH);
-
-                        ImageIcon icono = new ImageIcon(imagenEscalada);
-                        img1.setIcon(icono);
-                        nm1.setText(paciente.getNombre());
-                    } else if(img2.getWidth() > 0 && img2.getHeight() > 0 && num ==1) {
-                        int labelWidth = img2.getWidth();
-                        int labelHeight = img2.getHeight();
-
-                        Image imagenEscalada = imagenBuffer.getScaledInstance(labelWidth, labelHeight, Image.SCALE_SMOOTH);
-
-                        ImageIcon icono = new ImageIcon(imagenEscalada);
-                        img2.setIcon(icono);
-                        nm2.setText(paciente.getNombre());
-                    }else if(img3.getWidth() > 0 && img3.getHeight() > 0 && num ==2) {
-                        int labelWidth = img3.getWidth();
-                        int labelHeight = img3.getHeight();
-
-                        Image imagenEscalada = imagenBuffer.getScaledInstance(labelWidth, labelHeight, Image.SCALE_SMOOTH);
-
-                        ImageIcon icono = new ImageIcon(imagenEscalada);
-                        img3.setIcon(icono);
-                        nm3.setText(paciente.getNombre());
-                    }
-                    else{
-                        System.out.println("El JLabel aún no tiene un tamaño definido.");
-                    }
-                });
-            } else {
-                System.out.println("No se pudo convertir la imagen.");
+                Image imagenEscalada = imagenBuffer.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
+                label.setIcon(new ImageIcon(imagenEscalada));
+                nombre.setText(paciente.getNombre());
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-    } else {
-        System.out.println("El array de bytes está vacío o es nulo.");
     }
 }
     
@@ -113,6 +85,7 @@ public class MenuPacientes extends javax.swing.JFrame {
         Paciente3Pj = new javax.swing.JPanel();
         img3 = new javax.swing.JLabel();
         nm3 = new javax.swing.JLabel();
+        regresar = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -285,20 +258,32 @@ public class MenuPacientes extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
+        regresar.setText("Regresar");
+        regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(Paciente1Pj, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Paciente2Pj, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Paciente3Pj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(Paciente1Pj, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Paciente2Pj, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Paciente3Pj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(349, 349, 349)
+                        .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -311,7 +296,9 @@ public class MenuPacientes extends javax.swing.JFrame {
                     .addComponent(Paciente1Pj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Paciente2Pj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Paciente3Pj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -396,6 +383,12 @@ public class MenuPacientes extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_nm3MouseClicked
 
+    private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
+        MenuInicio regreso = new MenuInicio(person.getIdPersona());
+        regreso.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_regresarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Paciente1Pj;
     private javax.swing.JPanel Paciente2Pj;
@@ -412,5 +405,6 @@ public class MenuPacientes extends javax.swing.JFrame {
     private javax.swing.JLabel nm1;
     private javax.swing.JLabel nm2;
     private javax.swing.JLabel nm3;
+    private javax.swing.JButton regresar;
     // End of variables declaration//GEN-END:variables
 }

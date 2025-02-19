@@ -132,9 +132,9 @@ private void cerrarConexion() {
         for (Document relacion : relaciones) {
             pacientesIds.add(relacion.getInteger("id_paciente"));
         }
-
+        
         if (!pacientesIds.isEmpty()) {
-            FindIterable<Document> documentos = PERSONA.find(Filters.in("id_paciente", pacientesIds));
+            FindIterable<Document> documentos = PERSONA.find(Filters.in("id_persona", pacientesIds));
             for (Document documento : documentos) {
                 Persona persona = new Persona();
                 persona.setNombre(documento.getString("nombre"));
