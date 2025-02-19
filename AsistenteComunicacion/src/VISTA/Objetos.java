@@ -11,6 +11,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
@@ -34,7 +35,7 @@ public class Objetos extends javax.swing.JFrame {
         mostrarImagenActual(); 
         cargarid();
         IdAccion.setText(String.valueOf(_iddAccion));
-        IdAccion.setVisible(true);
+        IdAccion.setVisible(false);
     }
     private void cargarObjetos() {
   
@@ -47,27 +48,36 @@ public class Objetos extends javax.swing.JFrame {
 
 
     private void mostrarImagenActual() {
-     if (objetos != null && !objetos.isEmpty() && indiceActual >= 0 && indiceActual < objetos.size()) {
-         try {
-             byte[] imagenBytes = objetos.get(indiceActual).getImagen();
-             if (imagenBytes != null) {
-                 System.out.println("Cargando imagen..."); // Agregado para depuración
-                 ByteArrayInputStream bis = new ByteArrayInputStream(imagenBytes);
-                 Image img = ImageIO.read(bis);
-                 if (img == null) {
-                     System.out.println("Error al leer la imagen.");
-                 } else {
-                     ImageIcon icon = new ImageIcon(img.getScaledInstance(jLIMAGENES.getWidth(), jLIMAGENES.getHeight(), Image.SCALE_SMOOTH));
-                     jLIMAGENES.setIcon(icon); 
-                 }
-             } else {
-                 System.out.println("No se encontraron datos de imagen.");
-             }
-         } catch (Exception e) {
-             e.printStackTrace();
-         }
-     }
- }
+    if (objetos != null && !objetos.isEmpty() && indiceActual >= 0 && indiceActual < objetos.size()) {
+        try {
+            byte[] imagenBytes = objetos.get(indiceActual).getImagen();
+            if (imagenBytes != null && imagenBytes.length > 0) {
+                System.out.println("Cargando imagen..."); 
+                ByteArrayInputStream bis = new ByteArrayInputStream(imagenBytes);
+                Image img = ImageIO.read(bis);
+                if (img == null) {
+                    System.out.println("Error al leer la imagen. Asegúrate de que el archivo esté en un formato compatible.");
+                } else {
+                    
+                    ImageIcon icon = new ImageIcon(img.getScaledInstance(jLIMAGENES.getWidth(), jLIMAGENES.getHeight(), Image.SCALE_SMOOTH));
+                    jLIMAGENES.setIcon(icon); 
+                }
+            } else {
+                System.out.println("No se encontraron datos de imagen.");
+            }
+        } catch (IOException e) {
+            System.out.println("Error al intentar leer los datos de la imagen.");
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Ocurrió un error inesperado.");
+            e.printStackTrace();
+        }
+    } else {
+        System.out.println("No hay objetos disponibles o índice fuera de rango.");
+    }
+}
+
+
 
 
     private void cargarid() {
