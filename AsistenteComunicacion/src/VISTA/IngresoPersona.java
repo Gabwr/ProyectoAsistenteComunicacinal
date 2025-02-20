@@ -9,7 +9,9 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import javax.imageio.ImageIO;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -20,9 +22,17 @@ public class IngresoPersona extends javax.swing.JInternalFrame {
     public IngresoPersona(MenuAdministrativo menuAdmin) {  
         initComponents();
         this.menuAdmin = menuAdmin; 
-        
+        cbtutores.setVisible(false);
     }
+    public void cargartutores(){
+    DefaultComboBoxModel model = new DefaultComboBoxModel<>();
+    List<Persona> listaPersonas = new ServicioPersona().ListaTutores();
+        for (Persona persona : listaPersonas) {
 
+            model.addElement(persona);
+        }
+        cbtutores.setModel(model);
+    }
     
     private String rutaArchivo = null;
 
@@ -91,6 +101,7 @@ public class IngresoPersona extends javax.swing.JInternalFrame {
         SubirImagen = new javax.swing.JButton();
         JLabelimg = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        cbtutores = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(224, 98, 4));
 
@@ -128,6 +139,8 @@ public class IngresoPersona extends javax.swing.JInternalFrame {
         jLabel21.setForeground(new java.awt.Color(255, 204, 204));
         jLabel21.setText("Cambiar Contrasenia");
 
+        cbtutores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -150,9 +163,15 @@ public class IngresoPersona extends javax.swing.JInternalFrame {
                             .addGap(175, 175, 175)
                             .addComponent(Regresar))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGap(70, 70, 70)
-                            .addComponent(SubirImagen)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(70, 70, 70)
+                                    .addComponent(SubirImagen)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(131, 131, 131)
+                                    .addComponent(cbtutores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                             .addComponent(JLabelimg, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(56, 56, 56)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -175,7 +194,8 @@ public class IngresoPersona extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(JLabelimg, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
+                        .addComponent(cbtutores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)
                         .addComponent(SubirImagen)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,6 +299,7 @@ if (seleccion == javax.swing.JFileChooser.APPROVE_OPTION) {
     private javax.swing.JButton Regresar;
     private javax.swing.JButton SubirImagen;
     private javax.swing.JComboBox<String> cbperfiles;
+    private javax.swing.JComboBox<String> cbtutores;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

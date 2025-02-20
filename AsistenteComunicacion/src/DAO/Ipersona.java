@@ -32,4 +32,6 @@ public interface Ipersona {
    public Persona getpersona(int idpersona);
    
    public boolean ActualizarContrasenia(String contrasenia, Persona perosonactualizar);
+   
+   public List<Persona> ListaTutores();
 }

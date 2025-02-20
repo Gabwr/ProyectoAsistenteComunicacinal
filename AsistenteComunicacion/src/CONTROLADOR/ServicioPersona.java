@@ -57,4 +57,7 @@ public class ServicioPersona {
         return new PersonaMetodos().ActualizarContrasenia(contrasenia, perosonactualizar);
     }
 
+    public static List<Persona> ListaTutores(){
+        return new PersonaMetodos().ListaTutores();
+    }
 }

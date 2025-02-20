@@ -77,8 +77,20 @@ private void cerrarConexion() {
          person.setImg(img);
 
         return person;
-    }
+    }   
     
+    @Override
+    public List<Persona> ListaTutores(){
+    List<Persona> todos =ListaPersona();
+    for (Persona persona : todos) {
+        if (persona.getIdPerfil() == 2) {
+            todos.add(persona);
+        }
+    }
+        return todos;
+    
+    } 
+
         @Override
         public List<Persona> ListaPersona() {
         FindIterable<Document> documentos = PERSONA.find();
@@ -150,7 +162,7 @@ private void cerrarConexion() {
 
         return listapacientes;
     }
-        
+       
     @Override
     public boolean InsertarPersona(Persona persona) {
         Document documento;

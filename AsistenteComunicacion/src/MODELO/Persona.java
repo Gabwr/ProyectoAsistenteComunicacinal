@@ -97,6 +97,6 @@ public class Persona {
     
     @Override
     public String toString(){
-        return usuario+idPersona;
+        return usuario+" "+idPersona;
     }
 }
