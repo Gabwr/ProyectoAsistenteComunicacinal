@@ -26,7 +26,6 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Bienvenida = new javax.swing.JPanel();
         OpMenu = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         salir = new javax.swing.JButton();
         bttUsers = new javax.swing.JButton();
         Menubtt1 = new javax.swing.JButton();
@@ -50,15 +49,6 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
 
         OpMenu.setBackground(new java.awt.Color(255, 51, 0));
         OpMenu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jButton1.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
-        jButton1.setText("Inicio");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         salir.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         salir.setText("Salir");
@@ -85,21 +75,18 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
             .addGroup(OpMenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(OpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(salir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bttUsers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         OpMenuLayout.setVerticalGroup(
             OpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(OpMenuLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(salir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(bttUsers)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(salir)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         Menubtt1.setBackground(new java.awt.Color(255, 102, 51));
@@ -149,7 +136,7 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
                 .addComponent(Menubtt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(OpMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 252, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
                 .addComponent(bienvenida)
                 .addGap(22, 22, 22))
         );
@@ -201,10 +188,6 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void bttUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttUsersActionPerformed
     MenuAdministrativo menuAd = new MenuAdministrativo(person.getIdPersona());
     menuAd.setVisible(true);
@@ -241,7 +224,6 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel OpMenu;
     private javax.swing.JLabel bienvenida;
     private javax.swing.JButton bttUsers;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

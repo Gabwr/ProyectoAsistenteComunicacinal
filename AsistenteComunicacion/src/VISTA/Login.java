@@ -45,23 +45,21 @@ public class Login extends javax.swing.JFrame {
         DerechaLayout.setHorizontalGroup(
             DerechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DerechaLayout.createSequentialGroup()
-                .addContainerGap(110, Short.MAX_VALUE)
-                .addGroup(DerechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DerechaLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(129, 129, 129))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DerechaLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(95, 95, 95))))
+                .addGap(97, 97, 97)
+                .addComponent(jLabel4)
+                .addContainerGap(108, Short.MAX_VALUE))
+            .addGroup(DerechaLayout.createSequentialGroup()
+                .addComponent(jLabel5)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         DerechaLayout.setVerticalGroup(
             DerechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DerechaLayout.createSequentialGroup()
-                .addGap(89, 89, 89)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel5)
-                .addGap(42, 42, 42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 280, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         escritorio.add(Derecha);
