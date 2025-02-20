@@ -138,7 +138,6 @@ private void anteriorImagen() {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMRegresar = new javax.swing.JMenuItem();
-        jMPersonalizado = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
@@ -249,14 +248,6 @@ private void anteriorImagen() {
         });
         jMenu1.add(jMRegresar);
 
-        jMPersonalizado.setText("Objetos Personalizados");
-        jMPersonalizado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMPersonalizadoActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMPersonalizado);
-
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
@@ -327,10 +318,6 @@ private void anteriorImagen() {
     }
     }//GEN-LAST:event_RigthMouseClicked
 
-    private void jMPersonalizadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMPersonalizadoActionPerformed
-        
-    }//GEN-LAST:event_jMPersonalizadoActionPerformed
-
     private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
        MenuPacientes Paciente = new MenuPacientes(tutor.getIdPersona());
         Paciente.setVisible(true);
@@ -344,7 +331,6 @@ private void anteriorImagen() {
     private javax.swing.JLabel idAccion;
     private javax.swing.JLabel jLIMAGENES;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenuItem jMPersonalizado;
     private javax.swing.JMenuItem jMRegresar;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

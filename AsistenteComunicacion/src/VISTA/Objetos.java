@@ -405,7 +405,7 @@ private void mostrarDatosObjeto(Objeto objeto) {
 
     // Verificar que no esté vacío
     if (!nombreObjeto.isEmpty()) {
-        Objeto objetoEncontrado = ObjetoServicio.buscarObjetoPorNombre(_iddAccion, nombreObjeto);
+        Objeto objetoEncontrado = ObjetoServicio.buscarObjetoPorNombre(Acciones._idAccion, nombreObjeto);
         
         if (objetoEncontrado != null) {
             mostrarDatosObjeto(objetoEncontrado);
