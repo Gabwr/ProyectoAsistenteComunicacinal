@@ -288,14 +288,6 @@ public class MenuAdministrativo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtbusquedaKeyReleased
 
 
-        public static void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MenuAdministrativo(4).setVisible(true);
-            }
-        });
-    }
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar;
