@@ -30,6 +30,7 @@ public class Acciones extends javax.swing.JFrame {
     private Persona tutor;
      public Acciones() {
         initComponents();
+        this.setLocationRelativeTo(null);
         cargarAcciones();
         mostrarImagenActual();
         cargarid();

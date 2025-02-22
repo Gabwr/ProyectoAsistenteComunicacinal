@@ -6,6 +6,12 @@ import MODELO.Persona;
 import java.util.List;
 
 public interface Ipersona {
+  
+   public boolean asignartutor(int idpac, int idtut);
+   
+   public boolean actualizartutor(int idpac, int idtut);
+   
+   public Persona getTutor(int pac);
    
    public List<Persona> ListaPersona();
    

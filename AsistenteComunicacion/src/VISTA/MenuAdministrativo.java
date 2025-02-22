@@ -7,28 +7,38 @@ import MODELO.Persona;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 
 public class MenuAdministrativo extends javax.swing.JFrame {
        
     int fila=-1;
     private Persona person;
+    private List<Persona> listapersonas = new PersonaMetodos().ListaPersona();
+    
     public void consultarDatos() {
         DefaultTableModel modeloTabla = (DefaultTableModel) tbdatos.getModel();
         modeloTabla.setRowCount(0);
-        
-        List<Persona> listapersonas = new PersonaMetodos().ListaPersona();
+        String perfil="";
         for (Persona personas : listapersonas) {
-            Perfil nombreperfil = (new PersonaMetodos().getperfil(personas.getIdPerfil()));
+            if(personas.getIdPerfil()==1){
+                perfil="Administrador";
+            }else if(personas.getIdPerfil()==2){
+                perfil="Tutor";
+            }else if(personas.getIdPerfil()==3){
+                perfil="Paciente";
+            }
             modeloTabla.addRow(new Object[]{personas.getIdPersona(), personas.getNombre(), 
-                nombreperfil.getNombrePerfil(),personas.getUsuario(), personas.getEstado()});
+                perfil,personas.getUsuario(), personas.getEstado()});
         }
     }
     
     public MenuAdministrativo(int id) {
         initComponents();
         consultarDatos();
+        this.setLocationRelativeTo(null);
         person=new ServicioPersona().getpersona(id);
     }
 
@@ -44,8 +54,8 @@ public class MenuAdministrativo extends javax.swing.JFrame {
         actualizar = new javax.swing.JButton();
         regresar = new javax.swing.JButton();
         cambiarestado = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        filtro = new javax.swing.JComboBox<>();
+        txtbusqueda = new javax.swing.JTextField();
+        cbfiltro = new javax.swing.JComboBox<>();
         jLabel21 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -101,7 +111,13 @@ public class MenuAdministrativo extends javax.swing.JFrame {
             }
         });
 
-        filtro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filtrar por...", "ID", "Nombre", "Usuario", "Perfil", "Estado" }));
+        txtbusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbusquedaKeyReleased(evt);
+            }
+        });
+
+        cbfiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un Filtro:", "ID", "Nombre", "Usuario", "Perfil", "Estado" }));
 
         jLabel21.setBackground(new java.awt.Color(51, 51, 0));
         jLabel21.setFont(new java.awt.Font("Sitka Banner", 1, 36)); // NOI18N
@@ -128,9 +144,9 @@ public class MenuAdministrativo extends javax.swing.JFrame {
                                 .addComponent(cambiarestado))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbfiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jTextField1))
+                                    .addComponent(txtbusqueda))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 107, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -145,11 +161,11 @@ public class MenuAdministrativo extends javax.swing.JFrame {
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtbusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbfiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cambiarestado)
                     .addComponent(actualizar)
@@ -169,7 +185,9 @@ public class MenuAdministrativo extends javax.swing.JFrame {
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -229,18 +247,67 @@ public class MenuAdministrativo extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cambiarestadoActionPerformed
 
+    private void txtbusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyReleased
+           DefaultTableModel modelo = (DefaultTableModel) tbdatos.getModel();
+   
+    TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modelo);
+    tbdatos.setRowSorter(sorter);
+    String text = txtbusqueda.getText().trim();
+    
+    int selectedIndex = cbfiltro.getSelectedIndex();
+    if(text.length() == 0) {
+        sorter.setRowFilter(null);
+    } else {
+        if(selectedIndex == 0) {
+            JOptionPane.showMessageDialog(null, "Necesita seleccionar un filtro de busqueda");
+        } else {
+            int columnIndex = 0;
+            switch(selectedIndex) {
+                case 1:
+                    columnIndex = 0;
+                    break;
+                case 2: 
+                    columnIndex = 1;
+                    break;
+                case 3: 
+                    columnIndex = 3;
+                    break;
+                case 4: 
+                    columnIndex = 2;
+                    break;
+                case 5: 
+                    columnIndex = 4;
+                    break;
+                default:
+                    columnIndex = 0;
+                    break;
+            }
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + text, columnIndex));
+        }
+    }
+    }//GEN-LAST:event_txtbusquedaKeyReleased
 
+
+        public static void main(String args[]) {
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MenuAdministrativo(4).setVisible(true);
+            }
+        });
+    }
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar;
     private javax.swing.JButton cambiarestado;
+    private javax.swing.JComboBox<String> cbfiltro;
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JComboBox<String> filtro;
     private javax.swing.JButton ingreso;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton regresar;
     private javax.swing.JTable tbdatos;
+    private javax.swing.JTextField txtbusqueda;
     // End of variables declaration//GEN-END:variables
 }

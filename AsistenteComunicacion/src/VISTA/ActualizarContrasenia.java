@@ -9,6 +9,7 @@ Persona personactualizar = null;
     public ActualizarContrasenia(Persona person) {
         initComponents();
         cargarPersona(person);
+        this.setLocationRelativeTo(null);
     }
 
         public void cargarPersona(Persona person) {

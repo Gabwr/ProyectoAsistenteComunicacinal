@@ -18,18 +18,20 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class IngresoPersona extends javax.swing.JInternalFrame {
     private MenuAdministrativo menuAdmin;    
-    
     public IngresoPersona(MenuAdministrativo menuAdmin) {  
         initComponents();
         this.menuAdmin = menuAdmin; 
+        cargartutores();
         cbtutores.setVisible(false);
+        txtselectpac.setVisible(false);
     }
+    private List<Persona> listatutores = ServicioPersona.ListaTutores();
+    
     public void cargartutores(){
     DefaultComboBoxModel model = new DefaultComboBoxModel<>();
-    List<Persona> listaPersonas = new ServicioPersona().ListaTutores();
-        for (Persona persona : listaPersonas) {
-
-            model.addElement(persona);
+    model.addElement("Seleccionar");
+        for (Persona persona : listatutores) {
+            model.addElement(persona.getNombre());
         }
         cbtutores.setModel(model);
     }
@@ -60,6 +62,7 @@ public class IngresoPersona extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(null, "El nuevo usuario necesita asignarle un perfil para el ingreso");
         return false;
     }
+    
     if (JLabelimg.getIcon() == null) {
         Toolkit.getDefaultToolkit().beep();
         JOptionPane.showMessageDialog(null, "Cargue una imagen para poder continuar con el ingreso");
@@ -102,12 +105,18 @@ public class IngresoPersona extends javax.swing.JInternalFrame {
         JLabelimg = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         cbtutores = new javax.swing.JComboBox<>();
+        txtselectpac = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(224, 98, 4));
 
         jLabel1.setText("Nombre:");
 
         cbperfiles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar...", "Administrador", "Tutor", "Paciente" }));
+        cbperfiles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbperfilesActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Perfil:");
 
@@ -140,6 +149,13 @@ public class IngresoPersona extends javax.swing.JInternalFrame {
         jLabel21.setText("Cambiar Contrasenia");
 
         cbtutores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+        cbtutores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbtutoresActionPerformed(evt);
+            }
+        });
+
+        txtselectpac.setText("Seleccione un tutor para el paciente:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -147,37 +163,40 @@ public class IngresoPersona extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(35, 35, 35)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(93, 93, 93)
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbperfiles, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(217, 217, 217)
-                            .addComponent(Ingreso)
-                            .addGap(175, 175, 175)
-                            .addComponent(Regresar))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(70, 70, 70)
-                                    .addComponent(SubirImagen)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(131, 131, 131)
-                                    .addComponent(cbtutores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                            .addComponent(JLabelimg, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(56, 56, 56)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(117, 117, 117)
-                        .addComponent(jLabel21)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                        .addComponent(jLabel21))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtselectpac)
+                                .addGap(46, 46, 46)
+                                .addComponent(cbtutores, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(31, 31, 31)
+                                                .addComponent(SubirImagen))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(39, 39, 39))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(Ingreso)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cbperfiles, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(Regresar)
+                                        .addComponent(JLabelimg, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,19 +209,20 @@ public class IngresoPersona extends javax.swing.JInternalFrame {
                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbperfiles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JLabelimg, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbtutores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtselectpac))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(cbtutores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
-                        .addComponent(SubirImagen)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(SubirImagen)
+                        .addGap(87, 87, 87)
                         .addComponent(Ingreso)
-                        .addGap(33, 33, 33))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(44, 44, 44))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(JLabelimg, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(Regresar)
                         .addGap(20, 20, 20))))
         );
@@ -281,16 +301,56 @@ if (seleccion == javax.swing.JFileChooser.APPROVE_OPTION) {
         person.setUsuario(crearUser());
         person.setContrasenia(ServicioPersona.encriptar(person.getUsuario()));
         person.setIdPersona(ServicioPersona.ListaPersona().size()+1);
-
+        if(person.getIdPerfil()==3){
+        if (cbtutores.getSelectedIndex() == 0) {
+        Toolkit.getDefaultToolkit().beep();
+        JOptionPane.showMessageDialog(null, "El nuevo usuario paciente necesita un tutor que este a su cargo");
+        }else{
+        if(ServicioPersona.asignartutor(person.getIdPersona(), tutorSeleccionado.getIdPersona())
+                &&ServicioPersona.InsertarPersona(person)){
+        JOptionPane.showMessageDialog(null, "Usuario correctamente Ingresado");
+        menuAdmin.consultarDatos();
+        this.dispose();
+        }
+        }
+        
+        }else{
         if(ServicioPersona.InsertarPersona(person)){
         JOptionPane.showMessageDialog(null, "Usuario correctamente Ingresado");
         menuAdmin.consultarDatos();
         this.dispose();
         }
         
+        }
+        
        }
     
     }//GEN-LAST:event_IngresoActionPerformed
+
+    private void cbperfilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbperfilesActionPerformed
+        if(cbperfiles.getSelectedIndex()==3){
+            cbtutores.setVisible(true);
+            txtselectpac.setVisible(true);
+        }else{
+          cbtutores.setVisible(false);
+          txtselectpac.setVisible(false);
+        }
+    }//GEN-LAST:event_cbperfilesActionPerformed
+
+    private Persona tutorSeleccionado;
+    private void cbtutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbtutoresActionPerformed
+    if(cbtutores.getSelectedIndex() > 0) {
+        tutorSeleccionado = listatutores.get(cbtutores.getSelectedIndex() - 1);
+        List<Persona> listapacientes = new ServicioPersona().ListaPacientes(tutorSeleccionado);
+        if(listapacientes.size() >= 3){
+            JOptionPane.showMessageDialog(null, "El tutor ya tiene 3 pacientes asignados.");
+            cbtutores.setSelectedIndex(0);
+            tutorSeleccionado = null; // Opcional: reiniciar la variable
+        }
+    } else {
+        tutorSeleccionado = null;
+    }
+    }//GEN-LAST:event_cbtutoresActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -306,5 +366,6 @@ if (seleccion == javax.swing.JFileChooser.APPROVE_OPTION) {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtnombre;
+    private javax.swing.JLabel txtselectpac;
     // End of variables declaration//GEN-END:variables
 }

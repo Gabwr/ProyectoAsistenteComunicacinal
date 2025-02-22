@@ -10,6 +10,18 @@ public class ServicioPersona {
     public static Persona getpersona(int idpersona){
         return new PersonaMetodos().getpersona(idpersona);
     }
+       
+    public static boolean asignartutor(int idpac, int idtut){
+        return new PersonaMetodos().asignartutor(idpac, idtut);
+    }
+    
+    public static boolean actualizartutor(int idpac, int idtut){
+        return new PersonaMetodos().actualizartutor(idpac, idtut);
+    }
+            
+    public static Persona getTutor(int pac){
+        return new PersonaMetodos().getTutor(pac);
+    }
             
     public static List<Persona> ListaPersona(){
          return new PersonaMetodos().ListaPersona();

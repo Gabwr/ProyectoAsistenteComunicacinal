@@ -14,6 +14,7 @@ public class MenuInicio extends javax.swing.JFrame {
         OpMenu.setVisible(false);
         Menubtt1.setVisible(false);
         cargarnombre(idPersona);
+        this.setLocationRelativeTo(null);
     }
 
     public void cargarnombre(int id){

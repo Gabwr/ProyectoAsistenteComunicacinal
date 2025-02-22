@@ -79,17 +79,25 @@ private void cerrarConexion() {
         return person;
     }   
     
-    @Override
-    public List<Persona> ListaTutores(){
-    List<Persona> todos =ListaPersona();
+    public Persona getTutor(int pac){
+         Document relacionExistente = TUT_PAC.find(Filters.eq("id_paciente", pac)).first();
+        if (relacionExistente != null) {
+            Persona tutor = getpersona(relacionExistente.getInteger("id_tutor"));
+            return tutor;
+        }
+        return null;
+    }
+@Override
+public List<Persona> ListaTutores(){
+    List<Persona> todos = ListaPersona();
+    List<Persona> tutores = new ArrayList<>();
     for (Persona persona : todos) {
         if (persona.getIdPerfil() == 2) {
-            todos.add(persona);
+            tutores.add(persona);
         }
     }
-        return todos;
-    
-    } 
+    return tutores;
+} 
 
         @Override
         public List<Persona> ListaPersona() {
@@ -162,7 +170,69 @@ private void cerrarConexion() {
 
         return listapacientes;
     }
-       
+     
+    
+    @Override
+    public boolean actualizartutor(int idpac, int idtut) {
+    try {
+        Document relacionExistente = TUT_PAC.find(Filters.eq("id_paciente", idpac)).first();
+
+        if (relacionExistente != null) {
+            UpdateResult resultado = TUT_PAC.updateOne(
+                Filters.eq("id_tutorpaciente", relacionExistente.getInteger("id_tutorpaciente")),
+                new Document("$set", new Document("id_tutor", idtut))
+            );
+            if (resultado.getModifiedCount() > 0) {
+            JOptionPane.showMessageDialog(null, "Se ha actualizado correctamente el tutor");
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha podido asignar un nuevo Tutor");
+            return false;
+
+        }
+        }else {
+            int nuevoId = 0;
+            FindIterable<Document> documentos = TUT_PAC.find();
+            for (Document doc : documentos) {
+                nuevoId++;
+            }
+            
+            Document nuevoDocumento = new Document("id_tutorpaciente", nuevoId)
+                    .append("id_tutor", idtut)
+                    .append("id_paciente", idpac);
+            TUT_PAC.insertOne(nuevoDocumento);
+        }
+        return true;
+    } catch (MongoException ex) {
+        ex.printStackTrace();
+        return false;
+    } finally {
+        cerrarConexion();
+    }
+}
+     
+    @Override
+    public boolean asignartutor(int idpac, int idtut){
+        Document documento;
+        FindIterable<Document> documentos =TUT_PAC.find();
+        int id=0;
+        for (Document conteo : documentos){
+            id++;
+        }
+        try {
+            documento = new Document("id_tutorpaciente", id)
+                    .append("id_tutor",idtut)
+                    .append("id_paciente",idpac);
+            
+            TUT_PAC.insertOne(documento);
+            return true;
+        } catch (MongoException ex) {
+            return false;
+        } finally {
+            cerrarConexion();
+        }
+    }
+    
     @Override
     public boolean InsertarPersona(Persona persona) {
         Document documento;
@@ -197,7 +267,7 @@ private void cerrarConexion() {
             JOptionPane.showMessageDialog(null, "Se ha actualizado correctamente el registro");
             return true;
         } else {
-            JOptionPane.showMessageDialog(null, "No se ha podido actualizar el registro");
+            JOptionPane.showMessageDialog(null, "No se ha podido actualizar el registro de Persona");
             return false;
 
         }

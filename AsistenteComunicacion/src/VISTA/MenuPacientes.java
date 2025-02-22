@@ -27,6 +27,7 @@ public class MenuPacientes extends javax.swing.JFrame {
         nm2.setText("");
         nm3.setText("");
         CrearPersonas(id);
+        this.setLocationRelativeTo(null);
     }
     
     public void CrearPersonas(int id){
@@ -107,7 +108,7 @@ private void setImagenPaciente(JLabel label, JLabel nombre, Persona paciente) {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(250, 250, 250)
                 .addComponent(jLabel1)
-                .addContainerGap(299, Short.MAX_VALUE))
+                .addContainerGap(348, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,6 +272,9 @@ private void setImagenPaciente(JLabel label, JLabel nombre, Persona paciente) {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(349, 349, 349)
+                        .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -279,10 +283,7 @@ private void setImagenPaciente(JLabel label, JLabel nombre, Persona paciente) {
                                 .addGap(18, 18, 18)
                                 .addComponent(Paciente2Pj, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(Paciente3Pj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(349, 349, 349)
-                        .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Paciente3Pj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(

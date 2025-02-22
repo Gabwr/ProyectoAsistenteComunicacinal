@@ -25,6 +25,7 @@ Persona person ;
         initComponents();
         cargarObjetosDesdeMongo();
        person = ServicioPersona.getpersona(id);
+       this.setLocationRelativeTo(null);
     }
     
  private List<Objeto> cargarObjetosDesdeMongo() {

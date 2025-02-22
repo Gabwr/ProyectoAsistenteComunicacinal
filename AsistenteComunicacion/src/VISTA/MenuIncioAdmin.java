@@ -9,9 +9,11 @@ public class MenuIncioAdmin extends javax.swing.JFrame {
     private Persona person;
     public MenuIncioAdmin(int id) {
         initComponents();
+        this.setLocationRelativeTo(null);
         OpMenu.setVisible(false);
         Menubtt1.setVisible(false);
         cargarnombre(id);
+        
     }
 
         public void cargarnombre(int id){

@@ -31,6 +31,7 @@ public class Objetos extends javax.swing.JFrame {
     public Objetos() {
         _iddAccion = Acciones._idAccion; 
         initComponents();
+        this.setLocationRelativeTo(null);
         cargarObjetos(); 
         mostrarImagenActual(); 
         cargarid();
